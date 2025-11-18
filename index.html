@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eugene Kaurov - Motion Designer</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const translations = {
+                en: {
+                    'nav.about': 'About me',
+                    'nav.video': 'Video<br>Presentations',
+                    'nav.motion': 'Motion graphics<br>packages',
+                    'nav.logo': 'Logo<br>animations',
+                    'nav.showreel': 'Showreel',
+                    'nav.contacts': 'Contacts',
+                    'header.name': 'Eugene Kaurov',
+                    'header.role': 'Motion designer',
+                    'header.status': 'Freelancer',
+                    'header.location': 'Russian Federation, Moscow',
+                    'section.specializations': 'Specializations',
+                    'section.video.title': 'Video<br>presentations',
+                    'section.video.text': 'I create video presentations from scratch or based on the materials you provide, such as a PDF. The presentation can showcase a product, project, website, app, event, annual report, or any other topic. I use videos, photos, graphics, charts, and other visual elements to design a dynamic, modern, and concise solution that effectively conveys the key information.',
+                    'section.motion.title': 'Motion graphics packages',
+                    'section.motion.text': 'Animations designed for sports broadcasts, business forums, TV and YouTube shows, and channels. These packages can include opening sequences, transitions, lower thirds, titles, animated backgrounds, and other custom graphic elements tailored to your needs.',
+                    'section.logo.title': 'Logo<br>animations',
+                    'section.showreel.title': 'Showreel',
+                    'section.showreel.text': 'I also create motion graphics in various styles, including 3D animation, 2DFX, and collage animation. Collaborating with international clients, I deliver professional, high-quality results for each project.',
+                    'section.contacts.title': 'Contacts',
+                    'section.logo.text': 'Company logos are brought to life with animations ranging from simple 2D to complex 3D, depending on the client\'s needs. These animations can be used as video intros or overlaid on footage at any point during the video.',
+                    'section.contacts.text': 'For any inquiries, please contact me via email or Telegram. I\'ll respond as soon as possible.',
+                    'section.contacts.socialTitle': 'Follow Me on Social Media'
+                },
+                ru: {
+                    'nav.about': 'Обо мне',
+                    'nav.video': 'Видео<br>презентации',
+                    'nav.motion': 'Пакеты<br>моушн-графики',
+                    'nav.logo': 'Анимация<br>логотипа',
+                    'nav.showreel': 'Шоурил',
+                    'nav.contacts': 'Контакты',
+                    'header.name': 'Евгений Кауров',
+                    'header.role': 'Моушн-дизайнер',
+                    'header.status': 'Фрилансер',
+                    'header.location': 'Россия, Москва',
+                    'section.specializations': 'Специализации',
+                    'section.video.title': 'Видео<br>презентации',
+                    'section.video.text': 'Я создаю видео-презентации с нуля или на основе материалов, которые вы предоставляете, например PDF. Презентация может рассказывать о продукте, проекте, сайте, приложении, событии, годовом отчёте или любой другой теме. Я использую видео, фотографии, графику, диаграммы и другие визуальные элементы, чтобы сделать динамичное, современное и лаконичное решение, которое ясно доносит ключевую информацию.',
+                    'section.motion.title': 'Пакеты моушн-графики',
+                    'section.motion.text': 'Анимационные пакеты для спортивных трансляций, бизнес-форумов, телепередач и YouTube-шоу. В них могут входить заставки, переходы, плашки, титры, анимированные фоны и другие графические элементы, созданные под ваши задачи.',
+                    'section.logo.title': 'Анимация<br>логотипа',
+                    'section.logo.text': 'Я оживляю логотипы компаний с помощью анимации — от простой 2D до сложной 3D, в зависимости от задач клиента. Такие анимации можно использовать как интро или накладывать на видео в нужный момент.',
+                    'section.showreel.title': 'Шоурил',
+                    'section.showreel.text': 'Я создаю моушн-графику в разных стилях, включая 3D-анимацию, 2DFX и коллажную анимацию. Работая с международными заказчиками, я делаю акцент на профессиональном и качественном результате в каждом проекте.',
+                    'section.contacts.title': 'Контакты',
+                    'section.contacts.text': 'По любым вопросам пишите на email или в Telegram. Я постараюсь ответить как можно быстрее.',
+                    'section.contacts.socialTitle': 'Я в социальных сетях'
+                }
+            };
+
+            function applyLanguage(lang) {
+                const dict = translations[lang] || translations.en;
+                document.documentElement.lang = lang === 'ru' ? 'ru' : 'en';
+
+                document.querySelectorAll('[data-i18n-key]').forEach(function(el) {
+                    const key = el.getAttribute('data-i18n-key');
+                    if (dict[key]) {
+                        el.innerHTML = dict[key];
+                    }
+                });
+
+                document.querySelectorAll('.lang-toggle').forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            }
+
+            var systemLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            var initialLang = systemLang.indexOf('ru') === 0 ? 'ru' : 'en';
+            applyLanguage(initialLang);
+
+            document.querySelectorAll('.lang-toggle').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var lang = this.dataset.lang;
+                    applyLanguage(lang);
+                });
+            });
+
+            document.querySelectorAll('.nav-item').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="lang-toggle-bar-mobile">
+        <button class="lang-toggle" data-lang="en">eng</button>
+        <button class="lang-toggle" data-lang="ru">rus</button>
+    </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+            </div>
+            <a class="nav-item" data-target="about" data-i18n-key="nav.about">About me</a>
+            <a class="nav-item" data-target="video-presentations" data-i18n-key="nav.video">Video<br>Presentations</a>
+            <a class="nav-item" data-target="motion-graphics" data-i18n-key="nav.motion">Motion graphics<br>packages</a>
+            <a class="nav-item" data-target="logo-animations" data-i18n-key="nav.logo">Logo<br>animations</a>
+            <a class="nav-item" data-target="showreel" data-i18n-key="nav.showreel">Showreel</a>
+            <a class="nav-item" data-target="contacts" data-i18n-key="nav.contacts">Contacts</a>
+            <div class="social-icons">
+                <button class="lang-toggle" data-lang="en">eng</button>
+                <button class="lang-toggle" data-lang="ru">rus</button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header" id="about">
+            <div class="avatar">
+                <img src="assets/img/avatar-2022-07-26.jpg" alt="Eugene Kaurov avatar">
+            </div>
+            <div class="header-info">
+                <h1 data-i18n-key="header.name">Eugene Kaurov</h1>
+                <div class="subtitle" data-i18n-key="header.role">Motion designer</div>
+                <div class="subtitle" data-i18n-key="header.status">Freelancer</div>
+                <div class="location" data-i18n-key="header.location">Russian Federation, Moscow (GMT +10)</div>
+            </div>
+        </div>
+
+        <!-- Video Presentations Section -->
+        <div class="section" id="video-presentations">
+            <h2 class="section-title"><div class="section-title-wrapper"><span data-i18n-key="section.specializations">Specializations</span></div></h2>
+            <div class="section-content">
+                <div class="content-text">
+                    <h2 data-i18n-key="section.video.title">Video<br>presentations</h2>
+                    <p data-i18n-key="section.video.text">I create video presentations from scratch or based on the materials you provide, such as a PDF. The presentation can showcase a product, project, website, app, event, annual report, or any other topic. I use videos, photos, graphics, charts, and other visual elements to design a dynamic, modern, and concise solution that effectively conveys the key information.</p>
+                </div>
+                <div class="content-image">
+                    <div class="video-embed">
+                        <iframe src="https://www.behance.net/embed/project/210169365?ilo0=1"
+                                width="404"
+                                height="316"
+                                allowfullscreen
+                                loading="lazy"
+                                allow="clipboard-write"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo Animations Section -->
+        <div class="section" id="logo-animations">
+            <div class="section-content">
+                <div class="content-text">
+                    <h2 data-i18n-key="section.logo.title">Logo<br>animations</h2>
+                    <p data-i18n-key="section.logo.text">Company logos are brought to life with animations ranging from simple 2D to complex 3D, depending on the client's needs. These animations can be used as video intros or overlaid on footage at any point during the video.</p>
+                </div>
+                <div class="content-image">
+                    <div class="video-embed">
+                        <iframe src="https://www.behance.net/embed/project/225663325?ilo0=1"
+                                width="404"
+                                height="316"
+                                allowfullscreen
+                                loading="lazy"
+                                allow="clipboard-write"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motion Graphics Packages Section -->
+        <div class="section" id="motion-graphics">
+            <div class="section-content">
+                <div class="content-text">
+                    <h2 data-i18n-key="section.motion.title">Motion graphics<br>packages</h2>
+                    <p data-i18n-key="section.motion.text">Animations designed for sports broadcasts, business forums, TV and YouTube shows, and channels. These packages can include opening sequences, transitions, lower thirds, titles, animated backgrounds, and other custom graphic elements tailored to your needs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Showreel Section -->
+        <div class="section" id="showreel">
+            <h2 class="section-title"><div class="section-title-wrapper"><span data-i18n-key="section.showreel.title">Showreel</span></div></h2>
+            <div class="section-content">
+                <p class="showreel-text" data-i18n-key="section.showreel.text">I also create motion graphics in various styles, including 3D animation, 2DFX, and collage animation. Collaborating with international clients, I deliver professional, high-quality results for each project.</p>
+                <div class="showreel-image">
+                    <div class="video-embed">
+                        <iframe title="vimeo-player"
+                                src="https://player.vimeo.com/video/836142709?h=02caf23bcf"
+                                width="640"
+                                height="360"
+                                frameborder="0"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacts Section -->
+        <div class="section" id="contacts">
+            <h2 class="section-title"><div class="section-title-wrapper"><span data-i18n-key="section.contacts.title">Contacts</span></div></h2>
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <p data-i18n-key="section.contacts.text">For any inquiries, please contact me via email or Telegram. I'll respond as soon as possible.</p>
+                    <div class="contact-item">
+                        <a href="mailto:evkaurov@gmail.com" class="contact-link">
+                            <span class="contact-icon">
+                                <img src="assets/img/contacts-icon-1.svg" alt="Email icon">
+                            </span>
+                            <span class="contact-text">evkaurov@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://t.me/evkaurov" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            <span class="contact-icon">
+                                <img src="assets/img/contacts-icon-2.svg" alt="Telegram icon">
+                            </span>
+                            <span class="contact-text">@evkaurov</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="social-section">
+                    <div class="social-title" data-i18n-key="section.contacts.socialTitle">Follow Me on Social Media</div>
+                    <div class="social-links">
+                        <a class="social-link" href="https://www.instagram.com/kaurov" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/instagram.svg" alt="Instagram">
+                        </a>
+                        <a class="social-link" href="https://t.me/ekaurov" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/telegram.svg" alt="Telegram">
+                        </a>
+                        <a class="social-link" href="http://www.behance.net/Kaurov" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/behance.svg" alt="Behance">
+                        </a>
+                        <a class="social-link" href="https://vimeo.com/evkaurov" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/vimeo.svg" alt="Vimeo">
+                        </a>
+                        <a class="social-link" href="https://www.facebook.com/evgeniy.kaurov" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/img/facebook.svg" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
