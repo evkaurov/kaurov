@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Eugene Kaurov">
+    <meta property="og:description" content="Motion Designer">
+    <meta property="og:image" content="assets/img/preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eugene Kaurov">
+    <meta name="twitter:description" content="Motion Designer">
+    <meta name="twitter:image" content="assets/img/preview.jpg">
     <title>Eugene Kaurov - Motion Designer</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -31,7 +39,8 @@
                     'section.contacts.title': 'Contacts',
                     'section.logo.text': 'Company logos are brought to life with animations ranging from simple 2D to complex 3D, depending on the client\'s needs. These animations can be used as video intros or overlaid on footage at any point during the video.',
                     'section.contacts.text': 'For any inquiries, please contact me via email or Telegram. I\'ll respond as soon as possible.',
-                    'section.contacts.socialTitle': 'Follow Me on Social Media'
+                    'section.contacts.socialTitle': 'Follow Me on Social Media',
+                    'watchOn.label': 'Watch on'
                 },
                 ru: {
                     'nav.about': 'Обо мне',
@@ -55,7 +64,8 @@
                     'section.showreel.text': 'Я создаю моушн-графику в разных стилях, включая 3D-анимацию, 2DFX и коллажную анимацию. Работая с международными заказчиками, я делаю акцент на профессиональном и качественном результате в каждом проекте.',
                     'section.contacts.title': 'Контакты',
                     'section.contacts.text': 'По любым вопросам пишите на email или в Telegram. Я постараюсь ответить как можно быстрее.',
-                    'section.contacts.socialTitle': 'Я в социальных сетях'
+                    'section.contacts.socialTitle': 'Я в социальных сетях',
+                    'watchOn.label': 'Смотреть на'
                 }
             };
 
@@ -112,8 +122,8 @@
             </div>
             <a class="nav-item" data-target="about" data-i18n-key="nav.about">About me</a>
             <a class="nav-item" data-target="video-presentations" data-i18n-key="nav.video">Video<br>Presentations</a>
-            <a class="nav-item" data-target="motion-graphics" data-i18n-key="nav.motion">Motion graphics<br>packages</a>
             <a class="nav-item" data-target="logo-animations" data-i18n-key="nav.logo">Logo<br>animations</a>
+            <a class="nav-item" data-target="motion-graphics" data-i18n-key="nav.motion">Motion graphics<br>packages</a>
             <a class="nav-item" data-target="showreel" data-i18n-key="nav.showreel">Showreel</a>
             <a class="nav-item" data-target="contacts" data-i18n-key="nav.contacts">Contacts</a>
             <div class="social-icons">
@@ -144,15 +154,25 @@
                     <p data-i18n-key="section.video.text">I create video presentations from scratch or based on the materials you provide, such as a PDF. The presentation can showcase a product, project, website, app, event, annual report, or any other topic. I use videos, photos, graphics, charts, and other visual elements to design a dynamic, modern, and concise solution that effectively conveys the key information.</p>
                 </div>
                 <div class="content-image">
-                    <div class="video-embed">
-                        <iframe src="https://www.behance.net/embed/project/210169365?ilo0=1"
-                                width="404"
-                                height="316"
-                                allowfullscreen
-                                loading="lazy"
-                                allow="clipboard-write"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                scrolling="no"></iframe>
+                    <div class="video-embed video-embed--16x9">
+                        <video class="video-player" controls preload="metadata" playsinline poster="assets/video/presentation-reel-preview-1.png">
+                            <source src="assets/video/presentation-reel-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="watch-on">
+                        <span class="watch-on__label" data-i18n-key="watchOn.label">Watch on</span>
+                        <div class="watch-on__links">
+                            <a class="watch-on__link" href="https://vimeo.com/1019517744?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer" aria-label="Watch on Vimeo">
+                                <img src="assets/img/vimeo.svg" alt="Vimeo">
+                            </a>
+                            <a class="watch-on__link" href="https://youtu.be/k7F9ExTs74s" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+                                <img src="assets/img/youtube.svg" alt="YouTube">
+                            </a>
+                            <a class="watch-on__link" href="https://www.behance.net/gallery/210169365/Video-presentations-reel" target="_blank" rel="noopener noreferrer" aria-label="Watch on Behance">
+                                <img src="assets/img/behance.svg" alt="Behance">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,15 +216,22 @@
             <div class="section-content">
                 <p class="showreel-text" data-i18n-key="section.showreel.text">I also create motion graphics in various styles, including 3D animation, 2DFX, and collage animation. Collaborating with international clients, I deliver professional, high-quality results for each project.</p>
                 <div class="showreel-image">
-                    <div class="video-embed">
-                        <iframe title="vimeo-player"
-                                src="https://player.vimeo.com/video/836142709?h=02caf23bcf"
-                                width="640"
-                                height="360"
-                                frameborder="0"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                                allowfullscreen></iframe>
+                    <div class="video-embed video-embed--16x9">
+                        <video class="video-player" controls preload="metadata" playsinline poster="assets/video/showreel-2023-preview-1.jpg">
+                            <source src="assets/video/showreel-2023-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="watch-on">
+                        <span class="watch-on__label" data-i18n-key="watchOn.label">Watch on</span>
+                        <div class="watch-on__links">
+                            <a class="watch-on__link" href="https://vimeo.com/836142709?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer" aria-label="Watch on Vimeo">
+                                <img src="assets/img/vimeo.svg" alt="Vimeo">
+                            </a>
+                            <a class="watch-on__link" href="https://youtu.be/O8N3faXoRNs" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+                                <img src="assets/img/youtube.svg" alt="YouTube">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
