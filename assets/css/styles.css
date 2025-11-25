@@ -300,7 +300,6 @@
             top: 0;
             z-index: 150;
             background: transparent;
-            padding-top: var(--padding);
             padding-bottom: calc(var(--padding) / 1.2);
         }
 
