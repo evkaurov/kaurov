@@ -106,6 +106,23 @@
                     }
                 });
             });
+
+            const specializationsSticky = document.querySelector('.specializations-sticky');
+            const specializationsStart = document.getElementById('video-presentations');
+            const specializationsEnd = document.getElementById('motion-graphics');
+
+            if (specializationsSticky && specializationsStart && specializationsEnd) {
+                const updateStickyState = function() {
+                    const startRect = specializationsStart.getBoundingClientRect();
+                    const endRect = specializationsEnd.getBoundingClientRect();
+                    const isActive = startRect.top <= 0 && endRect.bottom > 0;
+                    specializationsSticky.classList.toggle('is-active', isActive);
+                };
+
+                window.addEventListener('scroll', updateStickyState, { passive: true });
+                window.addEventListener('resize', updateStickyState);
+                updateStickyState();
+            }
         });
     </script>
 </head>
@@ -113,6 +130,15 @@
     <div class="lang-toggle-bar-mobile">
         <button class="lang-toggle" data-lang="en">eng</button>
         <button class="lang-toggle" data-lang="ru">rus</button>
+    </div>
+    <div class="specializations-sticky" aria-hidden="true">
+        <div class="specializations-sticky__inner">
+            <h2 class="section-title section-title--floating">
+                <div class="section-title-wrapper">
+                    <span data-i18n-key="section.specializations">Specializations</span>
+                </div>
+            </h2>
+        </div>
     </div>
     <div class="container">
         <!-- Sidebar -->
