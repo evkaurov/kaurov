@@ -302,7 +302,6 @@
             background: transparent;
             padding-top: var(--padding);
             padding-bottom: calc(var(--padding) / 1.2);
-            overflow: hidden;
         }
 
         .specializations__title-bar::before,
@@ -322,8 +321,8 @@
         }
 
         .specializations__title-bar::after {
-            bottom: -32px;
-            height: 80px;
+            bottom: -56px;
+            height: 140px;
             background: linear-gradient(180deg, rgba(21, 21, 21, 0.78), rgba(21, 21, 21, 0));
             pointer-events: none;
         }
