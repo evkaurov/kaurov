@@ -286,72 +286,58 @@
             background-color: #fff;
         }
 
-        .specializations-sticky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 150;
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(-100%);
-            transition: opacity 0.25s ease, transform 0.25s ease;
-        }
-
-        .specializations-sticky.is-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .specializations-sticky__inner {
-            position: relative;
-            width: min(var(--container), 100%);
-            margin: 0 auto;
-            padding: var(--padding);
+        .specializations {
+            grid-column: 1 / -1;
             display: grid;
             grid-template-columns: repeat(var(--grid-cols), 1fr);
             gap: var(--gap);
-            background: #151515;
+            position: relative;
         }
 
-        .specializations-sticky__inner::after {
+        .specializations__title-bar {
+            grid-column: 3 / -1;
+            position: sticky;
+            top: 0;
+            z-index: 150;
+            background: #151515;
+            padding-top: var(--padding);
+            padding-bottom: calc(var(--padding) / 1.2);
+        }
+
+        .specializations__title-bar::after {
             content: '';
             position: absolute;
             left: 0;
             right: 0;
-            bottom: -18px;
-            height: 36px;
-            background: linear-gradient(180deg, rgba(21, 21, 21, 0.85), rgba(21, 21, 21, 0));
+            bottom: -24px;
+            height: 48px;
+            background: linear-gradient(180deg, rgba(21, 21, 21, 0.82), rgba(21, 21, 21, 0));
             pointer-events: none;
         }
 
-        .section-title--floating {
-            grid-column: 3 / -1;
-            margin: 0;
+        @media (max-width: 900px) {
+            .specializations__title-bar {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .specializations__title-bar {
+                grid-column: 1 / -1;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
         }
 
         @media (max-width: 900px) {
             .section-title::after {
                 flex: 1;
             }
-
-            .section-title--floating {
-                grid-column: 1 / -1;
-            }
         }
 
         @media (max-width: 600px) {
             .section-title::after {
                 flex: 1;
-            }
-
-            .specializations-sticky__inner {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .section-title--floating {
-                grid-column: 1 / -1;
             }
         }
 

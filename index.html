@@ -106,23 +106,6 @@
                     }
                 });
             });
-
-            const specializationsSticky = document.querySelector('.specializations-sticky');
-            const specializationsStart = document.getElementById('video-presentations');
-            const specializationsEnd = document.getElementById('motion-graphics');
-
-            if (specializationsSticky && specializationsStart && specializationsEnd) {
-                const updateStickyState = function() {
-                    const startRect = specializationsStart.getBoundingClientRect();
-                    const endRect = specializationsEnd.getBoundingClientRect();
-                    const isActive = startRect.top <= 0 && endRect.bottom > 0;
-                    specializationsSticky.classList.toggle('is-active', isActive);
-                };
-
-                window.addEventListener('scroll', updateStickyState, { passive: true });
-                window.addEventListener('resize', updateStickyState);
-                updateStickyState();
-            }
         });
     </script>
 </head>
@@ -130,15 +113,6 @@
     <div class="lang-toggle-bar-mobile">
         <button class="lang-toggle" data-lang="en">eng</button>
         <button class="lang-toggle" data-lang="ru">rus</button>
-    </div>
-    <div class="specializations-sticky" aria-hidden="true">
-        <div class="specializations-sticky__inner">
-            <h2 class="section-title section-title--floating">
-                <div class="section-title-wrapper">
-                    <span data-i18n-key="section.specializations">Specializations</span>
-                </div>
-            </h2>
-        </div>
     </div>
     <div class="container">
         <!-- Sidebar -->
@@ -171,67 +145,76 @@
             </div>
         </div>
 
-        <!-- Video Presentations Section -->
-        <div class="section" id="video-presentations">
-            <h2 class="section-title"><div class="section-title-wrapper"><span data-i18n-key="section.specializations">Specializations</span></div></h2>
-            <div class="section-content">
-                <div class="content-text">
-                    <h2 data-i18n-key="section.video.title">Video<br>presentations</h2>
-                    <p data-i18n-key="section.video.text">I create video presentations from scratch or based on the materials you provide, such as a PDF. The presentation can showcase a product, project, website, app, event, annual report, or any other topic. I use videos, photos, graphics, charts, and other visual elements to design a dynamic, modern, and concise solution that effectively conveys the key information.</p>
-                </div>
-                <div class="content-image">
-                    <div class="video-embed video-embed--16x9">
-                        <video class="video-player" controls preload="metadata" playsinline poster="assets/video/presentation-reel-preview-1.png">
-                            <source src="assets/video/presentation-reel-1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+        <div class="specializations" id="specializations">
+            <div class="specializations__title-bar">
+                <h2 class="section-title">
+                    <div class="section-title-wrapper">
+                        <span data-i18n-key="section.specializations">Specializations</span>
                     </div>
-                    <div class="watch-on">
-                        <span class="watch-on__label" data-i18n-key="watchOn.label">Watch on</span>
-                        <div class="watch-on__links">
-                            <a class="watch-on__link" href="https://vimeo.com/1019517744?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer" aria-label="Watch on Vimeo">
-                                <img src="assets/img/vimeo.svg" alt="Vimeo">
-                            </a>
-                            <a class="watch-on__link" href="https://youtu.be/k7F9ExTs74s" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
-                                <img src="assets/img/youtube.svg" alt="YouTube">
-                            </a>
-                            <a class="watch-on__link" href="https://www.behance.net/gallery/210169365/Video-presentations-reel" target="_blank" rel="noopener noreferrer" aria-label="Watch on Behance">
-                                <img src="assets/img/behance.svg" alt="Behance">
-                            </a>
+                </h2>
+            </div>
+
+            <!-- Video Presentations Section -->
+            <div class="section" id="video-presentations">
+                <div class="section-content">
+                    <div class="content-text">
+                        <h2 data-i18n-key="section.video.title">Video<br>presentations</h2>
+                        <p data-i18n-key="section.video.text">I create video presentations from scratch or based on the materials you provide, such as a PDF. The presentation can showcase a product, project, website, app, event, annual report, or any other topic. I use videos, photos, graphics, charts, and other visual elements to design a dynamic, modern, and concise solution that effectively conveys the key information.</p>
+                    </div>
+                    <div class="content-image">
+                        <div class="video-embed video-embed--16x9">
+                            <video class="video-player" controls preload="metadata" playsinline poster="assets/video/presentation-reel-preview-1.png">
+                                <source src="assets/video/presentation-reel-1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="watch-on">
+                            <span class="watch-on__label" data-i18n-key="watchOn.label">Watch on</span>
+                            <div class="watch-on__links">
+                                <a class="watch-on__link" href="https://vimeo.com/1019517744?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer" aria-label="Watch on Vimeo">
+                                    <img src="assets/img/vimeo.svg" alt="Vimeo">
+                                </a>
+                                <a class="watch-on__link" href="https://youtu.be/k7F9ExTs74s" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+                                    <img src="assets/img/youtube.svg" alt="YouTube">
+                                </a>
+                                <a class="watch-on__link" href="https://www.behance.net/gallery/210169365/Video-presentations-reel" target="_blank" rel="noopener noreferrer" aria-label="Watch on Behance">
+                                    <img src="assets/img/behance.svg" alt="Behance">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Logo Animations Section -->
-        <div class="section" id="logo-animations">
-            <div class="section-content">
-                <div class="content-text">
-                    <h2 data-i18n-key="section.logo.title">Logo<br>animations</h2>
-                    <p data-i18n-key="section.logo.text">Company logos are brought to life with animations ranging from simple 2D to complex 3D, depending on the client's needs. These animations can be used as video intros or overlaid on footage at any point during the video.</p>
-                </div>
-                <div class="content-image">
-                    <div class="video-embed">
-                        <iframe src="https://www.behance.net/embed/project/225663325?ilo0=1"
-                                width="404"
-                                height="316"
-                                allowfullscreen
-                                loading="lazy"
-                                allow="clipboard-write"
-                                referrerpolicy="strict-origin-when-cross-origin"
-                                scrolling="no"></iframe>
+            <!-- Logo Animations Section -->
+            <div class="section" id="logo-animations">
+                <div class="section-content">
+                    <div class="content-text">
+                        <h2 data-i18n-key="section.logo.title">Logo<br>animations</h2>
+                        <p data-i18n-key="section.logo.text">Company logos are brought to life with animations ranging from simple 2D to complex 3D, depending on the client's needs. These animations can be used as video intros or overlaid on footage at any point during the video.</p>
+                    </div>
+                    <div class="content-image">
+                        <div class="video-embed">
+                            <iframe src="https://www.behance.net/embed/project/225663325?ilo0=1"
+                                    width="404"
+                                    height="316"
+                                    allowfullscreen
+                                    loading="lazy"
+                                    allow="clipboard-write"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    scrolling="no"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Motion Graphics Packages Section -->
-        <div class="section" id="motion-graphics">
-            <div class="section-content">
-                <div class="content-text">
-                    <h2 data-i18n-key="section.motion.title">Motion graphics<br>packages</h2>
-                    <p data-i18n-key="section.motion.text">Animations designed for sports broadcasts, business forums, TV and YouTube shows, and channels. These packages can include opening sequences, transitions, lower thirds, titles, animated backgrounds, and other custom graphic elements tailored to your needs.</p>
+            <!-- Motion Graphics Packages Section -->
+            <div class="section" id="motion-graphics">
+                <div class="section-content">
+                    <div class="content-text">
+                        <h2 data-i18n-key="section.motion.title">Motion graphics<br>packages</h2>
+                        <p data-i18n-key="section.motion.text">Animations designed for sports broadcasts, business forums, TV and YouTube shows, and channels. These packages can include opening sequences, transitions, lower thirds, titles, animated backgrounds, and other custom graphic elements tailored to your needs.</p>
+                    </div>
                 </div>
             </div>
         </div>
