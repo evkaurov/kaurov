@@ -299,7 +299,7 @@
             position: sticky;
             top: 0;
             z-index: 150;
-            background: #151515;
+            background: linear-gradient(180deg, #151515 0%, rgba(21, 21, 21, 0.6) 45%, rgba(21, 21, 21, 0) 100%);
             padding-top: var(--padding);
             padding-bottom: calc(var(--padding) / 1.2);
         }
@@ -309,9 +309,9 @@
             position: absolute;
             left: 0;
             right: 0;
-            bottom: -24px;
-            height: 48px;
-            background: linear-gradient(180deg, rgba(21, 21, 21, 0.82), rgba(21, 21, 21, 0));
+            bottom: -32px;
+            height: 80px;
+            background: linear-gradient(180deg, rgba(21, 21, 21, 0.78), rgba(21, 21, 21, 0));
             pointer-events: none;
         }
 
