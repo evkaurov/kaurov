@@ -299,20 +299,38 @@
             position: sticky;
             top: 0;
             z-index: 150;
-            background: linear-gradient(180deg, #151515 0%, rgba(21, 21, 21, 0.6) 45%, rgba(21, 21, 21, 0) 100%);
+            background: #151515;
             padding-top: var(--padding);
             padding-bottom: calc(var(--padding) / 1.2);
+            overflow: hidden;
         }
 
+        .specializations__title-bar::before,
         .specializations__title-bar::after {
             content: '';
             position: absolute;
             left: 0;
             right: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .specializations__title-bar::before {
+            top: 0;
+            height: 120%;
+            background: linear-gradient(180deg, rgba(21, 21, 21, 0.9) 0%, rgba(21, 21, 21, 0.6) 70%, rgba(21, 21, 21, 0) 100%);
+        }
+
+        .specializations__title-bar::after {
             bottom: -32px;
             height: 80px;
             background: linear-gradient(180deg, rgba(21, 21, 21, 0.78), rgba(21, 21, 21, 0));
             pointer-events: none;
+        }
+
+        .specializations__title-bar > * {
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 900px) {
