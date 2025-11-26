@@ -115,7 +115,15 @@
                     const targetId = this.getAttribute('data-target');
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        const isInsideSpecializations = !!targetElement.closest('.specializations');
+                        if (isInsideSpecializations) {
+                            const stickyTitle = document.querySelector('.specializations__title-bar');
+                            const offset = (stickyTitle ? stickyTitle.offsetHeight : 0) + 40;
+                            const targetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+                            window.scrollTo({ top: targetTop - offset, behavior: 'smooth' });
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                     }
                 });
             });
