@@ -317,13 +317,13 @@
         .specializations__title-bar::before {
             top: 0;
             height: 140%;
-            background: linear-gradient(180deg, #151515 0%, #151515 55%, rgba(21, 21, 21, 0.6) 70%, rgba(21, 21, 21, 0) 100%);
+            background: linear-gradient(180deg, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 55%, rgba(255, 0, 0, 0.6) 70%, rgba(255, 0, 0, 0) 100%);
         }
 
         .specializations__title-bar::after {
             bottom: -56px;
             height: 140px;
-            background: linear-gradient(180deg, rgba(21, 21, 21, 0.78), rgba(21, 21, 21, 0));
+            background: linear-gradient(180deg, rgba(255, 0, 0, 0.78), rgba(255, 0, 0, 0));
             pointer-events: none;
         }
 
