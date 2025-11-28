@@ -321,8 +321,8 @@
             background: linear-gradient(
                 180deg,
                 rgb(var(--kaurov-dark)) 0%,
-                rgb(var(--kaurov-dark)) 70%,
-                rgb(var(--kaurov-dark)) 70%,
+                rgb(var(--kaurov-dark)) 55%,
+                rgb(var(--kaurov-dark)) 55%,
                 rgba(var(--kaurov-dark), 0) 100%
             );
         }
