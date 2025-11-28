@@ -32,6 +32,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const translations = {
                 en: {
+                    'page.title': 'Eugene Kaurov - Motion designer',
                     'nav.about': 'About me',
                     'nav.video': 'Video<br>Presentations',
                     'nav.motion': 'Motion Graphics<br>Packages',
@@ -57,6 +58,7 @@
                     'watchOn.label': 'Watch on'
                 },
                 ru: {
+                    'page.title': 'Евгений Кауров - Моушн-дизайнер',
                     'nav.about': 'Обо мне',
                     'nav.video': 'Видео<br>презентации',
                     'nav.motion': 'Пакеты<br>моушн-графики',
@@ -86,6 +88,10 @@
             function applyLanguage(lang) {
                 const dict = translations[lang] || translations.en;
                 document.documentElement.lang = lang === 'ru' ? 'ru' : 'en';
+
+                if (dict['page.title']) {
+                    document.title = dict['page.title'];
+                }
 
                 document.querySelectorAll('[data-i18n-key]').forEach(function(el) {
                     const key = el.getAttribute('data-i18n-key');
