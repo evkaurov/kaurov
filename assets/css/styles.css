@@ -291,7 +291,8 @@
             grid-column: 1 / -1;
             display: grid;
             grid-template-columns: repeat(var(--grid-cols), 1fr);
-            gap: var(--gap);
+            column-gap: 0;
+            row-gap: var(--gap);
             position: relative;
         }
 
@@ -315,7 +316,7 @@
 
         .specializations__title-bar::before {
             top: 0;
-            height: 140%;
+            height: 100%;
             background: linear-gradient(180deg, rgb(106, 255, 0) 0%, rgb(8, 238, 5) 55%, rgba(34, 255, 0, 0.6) 70%, rgba(255, 0, 0, 0) 100%);
         }
 
