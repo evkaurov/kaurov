@@ -304,8 +304,7 @@
             padding-bottom: calc(var(--padding) / 1.2);
         }
 
-        .specializations__title-bar::before,
-        .specializations__title-bar::after {
+        .specializations__title-bar::before {
             content: '';
             position: absolute;
             left: 0;
@@ -317,14 +316,7 @@
         .specializations__title-bar::before {
             top: 0;
             height: 140%;
-            background: linear-gradient(180deg, rgba(255, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 55%, rgba(255, 0, 0, 0.6) 70%, rgba(255, 0, 0, 0) 100%);
-        }
-
-        .specializations__title-bar::after {
-            bottom: -56px;
-            height: 140px;
-            background: linear-gradient(180deg, rgba(255, 0, 0, 0.78), rgba(255, 0, 0, 0));
-            pointer-events: none;
+            background: linear-gradient(180deg, rgb(106, 255, 0) 0%, rgb(8, 238, 5) 55%, rgba(34, 255, 0, 0.6) 70%, rgba(255, 0, 0, 0) 100%);
         }
 
         .specializations__title-bar > * {
