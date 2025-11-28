@@ -4,7 +4,7 @@
             --gap: clamp(18px, 2vw, 24px);
             --grid-cols: 12;
             --padding: clamp(30px, 3.5vw, 40px);
-            --kaurov-dark: 255, 0, 72;
+            --kaurov-dark: 21, 21, 21;
         }
 
         @media (max-width: 900px) {
