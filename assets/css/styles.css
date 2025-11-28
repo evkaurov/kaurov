@@ -4,7 +4,7 @@
             --gap: clamp(18px, 2vw, 24px);
             --grid-cols: 12;
             --padding: clamp(30px, 3.5vw, 40px);
-            --specializations-title-bar-color: 255, 0, 72;
+            --kaurov-dark: 255, 0, 72;
         }
 
         @media (max-width: 900px) {
@@ -27,7 +27,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #151515;
+            background-color: rgb(var(--kaurov-dark));
             color: #fff;
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -320,10 +320,10 @@
             height: 100%;
             background: linear-gradient(
                 180deg,
-                rgb(var(--specializations-title-bar-color)) 0%,
-                rgb(var(--specializations-title-bar-color)) 70%,
-                rgb(var(--specializations-title-bar-color)) 70%,
-                rgba(var(--specializations-title-bar-color), 0) 100%
+                rgb(var(--kaurov-dark)) 0%,
+                rgb(var(--kaurov-dark)) 70%,
+                rgb(var(--kaurov-dark)) 70%,
+                rgba(var(--kaurov-dark), 0) 100%
             );
         }
 
@@ -340,10 +340,10 @@
             .specializations__title-bar::before {
                 background: linear-gradient(
                     180deg,
-                    rgb(var(--specializations-title-bar-color)) 0%,
-                    rgb(var(--specializations-title-bar-color)) 70%,
-                    rgb(var(--specializations-title-bar-color)) 70%,
-                    rgba(var(--specializations-title-bar-color), 0) 100%
+                    rgb(var(--kaurov-dark)) 0%,
+                    rgb(var(--kaurov-dark)) 70%,
+                    rgb(var(--kaurov-dark)) 70%,
+                    rgba(var(--kaurov-dark), 0) 100%
                 );
             }
         }
@@ -356,10 +356,10 @@
             .specializations__title-bar::before {
                 background: linear-gradient(
                     180deg,
-                    rgb(var(--specializations-title-bar-color)) 0%,
-                    rgb(var(--specializations-title-bar-color)) 70%,
-                    rgb(var(--specializations-title-bar-color)) 70%,
-                    rgba(var(--specializations-title-bar-color), 0) 100%
+                    rgb(var(--kaurov-dark)) 0%,
+                    rgb(var(--kaurov-dark)) 70%,
+                    rgb(var(--kaurov-dark)) 70%,
+                    rgba(var(--kaurov-dark), 0) 100%
                 );
             }
         }
