@@ -122,9 +122,13 @@
                             const targetTop = targetElement.getBoundingClientRect().top + window.scrollY;
                             window.scrollTo({ top: targetTop - offset, behavior: 'smooth' });
                         } else {
-                            const targetTop = targetElement.getBoundingClientRect().top + window.scrollY;
-                            const offset = 40;
-                            window.scrollTo({ top: targetTop - offset, behavior: 'smooth' });
+                            if (targetId === 'about') {
+                                const targetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+                                const offset = 40;
+                                window.scrollTo({ top: targetTop - offset, behavior: 'smooth' });
+                            } else {
+                                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
                         }
                     }
                 });
