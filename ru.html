@@ -59,8 +59,8 @@
 </head>
 <body>
     <div class="lang-toggle-bar-mobile">
-        <a class="lang-toggle" href="index.html">eng</a>
-        <button class="lang-toggle active" type="button">rus</button>
+        <a class="lang-toggle" href="index.html" onclick="localStorage.setItem('preferredLang', 'en')">eng</a>
+        <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'ru')">rus</button>
     </div>
     <div class="container">
         <!-- Sidebar -->
@@ -75,8 +75,8 @@
             <a class="nav-item" data-target="showreel">Шоурил</a>
             <a class="nav-item" data-target="contacts">Контакты</a>
             <div class="social-icons">
-                <a class="lang-toggle" href="index.html">eng</a>
-                <button class="lang-toggle active" type="button">rus</button>
+                <a class="lang-toggle" href="index.html" onclick="localStorage.setItem('preferredLang', 'en')">eng</a>
+                <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'ru')">rus</button>
             </div>
         </div>
 
