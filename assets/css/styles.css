@@ -764,7 +764,7 @@
         }
 
         .not-found__logo {
-            margin-top: calc(var(--nf-gap) * -0.5);
             display: grid;
             place-items: center;
+            min-height: calc(clamp(34px, 4.2vw, 52px) * 1.5);
         }
