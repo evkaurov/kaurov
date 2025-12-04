@@ -787,3 +787,167 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* Font Collector */
+        .script-avatar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 60%),
+                        linear-gradient(135deg, #101010 0%, #1f1f1f 100%);
+            border: 1px solid #2c2c2c;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        }
+
+        .script-avatar__label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+        }
+
+        .script-avatar__title {
+            font-size: clamp(18px, 3vw, 26px);
+            font-weight: 800;
+        }
+
+        .script-avatar__subtitle {
+            font-size: 11px;
+            font-weight: 600;
+            color: #dcdcdc;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid #2f2f2f;
+            background: linear-gradient(145deg, #1a1a1a 0%, #111 100%);
+            color: #cfcfcf;
+            font-size: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            border: 1px solid #444;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            font-size: 13px;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .button--primary {
+            background-color: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .button--primary:hover {
+            background-color: #d7ff7c;
+            border-color: #d7ff7c;
+            color: #0e0e0e;
+        }
+
+        .button--ghost {
+            background-color: #151515;
+            color: #fff;
+            border-color: #2f2f2f;
+        }
+
+        .button--ghost:hover {
+            background-color: #fff;
+            border-color: #fff;
+            color: #000;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 10px;
+            margin-top: 16px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cfcfcf;
+        }
+
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d7ff7c 0%, #7ad0ff 100%);
+        }
+
+        .download-card {
+            display: grid;
+            gap: 12px;
+            padding: clamp(18px, 3vw, 26px);
+            border-radius: 16px;
+            border: 1px solid #2f2f2f;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .download-card__heading,
+        .download-card__title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .download-card__meta {
+            font-size: 13px;
+            color: #c3c3c3;
+        }
+
+        .download-steps {
+            padding-left: 18px;
+            display: grid;
+            gap: 8px;
+            color: #d2d2d2;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .download-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
