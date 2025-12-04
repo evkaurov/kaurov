@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Collector 1.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#151515',
+                        surface: '#1a1a1a',
+                        border: '#2a2a2a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #151515; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .step-card {
+            border-color: #2a2a2a;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .menu-path span {
+            display: inline-flex;
+            align-items: center;
+        }
+        .menu-path i {
+            margin: 0 4px;
+            font-size: 0.7rem;
+            color: #777;
+        }
+        
+        kbd {
+            background-color: #222;
+            border: 1px solid #333;
+            color: #ccc;
+            border-radius: 4px;
+            font-size: 0.70rem;
+            font-weight: 500;
+            padding: 2px 6px;
+            white-space: nowrap;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        :root {
+            --kaurov-dark: 21, 21, 21;
+            --border-color: #444;
+            --text-muted: #777;
+            --accent: #777777;
+        }
+
+        .lang-toggle-bar {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-toggle {
+            padding: 4px 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background-color: rgb(var(--kaurov-dark));
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .lang-toggle:hover {
+            color: #fff;
+            border-color: #888;
+        }
+
+        .lang-toggle.active {
+            background-color: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+        }
+
+        .lang-toggle.active:hover {
+            background-color: #fff;
+            border-color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-bg text-neutral-300 antialiased min-h-screen selection:bg-white selection:text-black flex justify-center">
+
+    <div class="flex w-full max-w-6xl border-x border-border min-h-screen bg-bg relative">
+
+        <aside class="w-20 md:w-24 border-r border-border flex flex-col items-center py-12 flex-shrink-0 sticky top-0 h-screen z-20 bg-bg">
+            <a href="https://kaurov.net" target="_blank" class="mb-8 hover:opacity-70 transition-opacity" title="kaurov.net">
+                <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 297.64 343.68" class="w-12 h-auto">
+                    <defs>
+                        <style>
+                            .st0 {
+                                fill: #fff;
+                                fill-rule: evenodd;
+                            }
+                        </style>
+                    </defs>
+                    <path class="st0" d="M269.29,129.32c0,19.57-15.86,35.43-35.43,35.43s-35.43-15.86-35.43-35.43V61.29l10.63,6.14,3.54,2.05v59.84c0,11.74,9.52,21.26,21.26,21.26s21.26-9.52,21.26-21.26v-35.3l14.17,8.18v27.11h0Z"/>
+                    <path class="st0" d="M148.82,32.65l-35.43,20.46v111.64h14.17v-42.52h42.52v42.52h14.17V53.11l-35.43-20.46h0ZM127.56,61.26l21.26-12.27,21.26,12.27v46.81h-42.52v-46.81h0Z"/>
+                    <path class="st0" d="M69.94,94.42c16.63,2.92,29.27,17.43,29.27,34.9v35.43h-14.17v-35.43c0-11.74-9.52-21.26-21.26-21.26h-21.26v56.69h-14.17v-62.61c23.62-13.64,47.26-27.22,70.87-40.85v16.23l-29.27,16.9h-.01Z"/>
+                    <path class="st0" d="M269.29,241.47c-23.62,13.64-47.24,27.28-70.87,40.91v-103.46h14.17v78.95l42.52-24.55v-54.4h14.17v62.55h0Z"/>
+                    <path class="st0" d="M148.87,311.06l-35.43-20.46c0-25.41-.06-50.79-.06-76.24,0-19.57,15.86-35.43,35.43-35.43s35.43,15.86,35.43,35.43c0,25.42.06,50.78.06,76.24l-35.43,20.46h0ZM127.61,282.46l21.26,12.27,21.26-12.27c0-22.67-.06-45.37-.06-68.1,0-11.74-9.52-21.26-21.26-21.26s-21.26,9.52-21.26,21.26c0,22.71.06,45.35.06,68.1Z"/>
+                    <path class="st0" d="M99.21,282.39v-16.33l-29.14-16.83c16.57-2.97,29.14-17.45,29.14-34.88,0-19.57-15.86-35.43-35.43-35.43H28.35v62.61c23.61,13.63,47.25,27.22,70.87,40.85h-.01ZM42.52,193.1h21.26c11.74,0,21.26,9.52,21.26,21.26s-9.52,21.26-21.26,21.26h-21.26v-42.52h0Z"/>
+                </svg>
+            </a>
+        </aside>
+
+        <main class="flex-1 px-8 md:px-16 py-16 space-y-20 relative">
+
+            <section id="about" class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+                
+                <div class="md:col-span-4 text-left space-y-8">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+                            Font Collector 1.0
+                        </h2>
+                        <p class="text-base text-neutral-400 mt-6 font-light leading-relaxed" data-i18n="hero_desc">
+                            Скрипт автоматически сканирует ваш проект в After Effects, Photoshop или Illustrator, находит использованные шрифты в системе и копирует их в папку рядом с файлом проекта.
+                        </p>
+                    </div>
+                    
+                    <div class="flex gap-4 pt-4">
+                        <button onclick="setOS('windows')" id="btn-win" class="group flex items-center space-x-3 px-5 py-2 rounded-md border border-border text-sm transition-all focus:outline-none bg-surface text-neutral-400 hover:text-white hover:border-neutral-600">
+                            <i class="fab fa-windows text-lg transition-colors"></i>
+                            <span>Windows</span>
+                        </button>
+                        <button onclick="setOS('mac')" id="btn-mac" class="group flex items-center space-x-3 px-5 py-2 rounded-md border border-border text-sm transition-all focus:outline-none bg-surface text-neutral-400 hover:text-white hover:border-neutral-600">
+                            <i class="fab fa-apple text-lg transition-colors"></i>
+                            <span>macOS</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="md:col-span-1 flex justify-start md:justify-end">
+                    <div class="lang-toggle-bar">
+                        <button class="lang-toggle" data-lang="en">eng</button>
+                        <button class="lang-toggle" data-lang="ru">rus</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="usage">
+                
+                <div class="space-y-12">
+                    <div class="flex flex-col md:flex-row gap-8 items-start group">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-surface border border-border text-white flex items-center justify-center font-semibold text-lg">1</div>
+                        <div class="flex-1">
+                            <h4 class="text-lg font-semibold text-white" data-i18n="step1_title">Подготовка проекта</h4>
+                            <p class="mt-3 text-neutral-400 leading-relaxed text-sm">
+                                <span data-i18n="step1_text">Откройте ваш проект.</span> 
+                                <span class="inline-flex items-center bg-neutral-800 text-neutral-300 px-2 py-0.5 rounded text-[10px] uppercase tracking-wide font-medium border border-neutral-700 ml-2 align-middle" data-i18n="important">
+                                    Важно
+                                </span>
+                            </p>
+                            <p class="mt-2 text-neutral-400 text-sm">
+                                <span data-i18n="step1_desc_start">Проект <strong>обязательно</strong> должен быть сохранен на диске. Если это новый файл, сохраните его</span> 
+                                <span class="mx-1 align-baseline">
+                                    <span class="os-text-win hidden"><kbd>Ctrl</kbd> + <kbd>S</kbd></span>
+                                    <span class="os-text-mac hidden"><kbd>Cmd</kbd> + <kbd>S</kbd></span>
+                                </span> 
+                                <span data-i18n="step1_desc_end">перед запуском.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-surface border border-border text-white flex items-center justify-center font-semibold text-lg">2</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-lg font-semibold text-white" data-i18n="step2_title">Запуск скрипта</h4>
+                            
+                            <div class="grid gap-4 md:grid-cols-3 mt-4">
+                                
+                                <div class="bg-surface p-5 rounded-lg border border-border step-card flex flex-col">
+                                    <div class="flex items-center space-x-3 mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-6 h-6 rounded">
+                                            <rect width="100" height="100" rx="20" fill="#00005b"/>
+                                            <text x="50" y="66" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#D697FF" text-anchor="middle">Ae</text>
+                                        </svg>
+                                        <span class="font-medium text-neutral-200 text-sm">After Effects</span>
+                                    </div>
+                                    <div class="text-[13px] text-white font-medium menu-path leading-loose">
+                                        File <i class="fas fa-chevron-right"></i> Scripts <i class="fas fa-chevron-right"></i> Run Script File...
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-border/50 text-[10px] text-neutral-500 leading-relaxed" data-i18n="ae_warning">
+                                        Этому скрипту требуется доступ к записи файлов.
+                                        Откройте After Effects 'Preferences' -> 'Scripting and Expressions' и убедитесь, что галочка 'Allow Scripts to Write Files and Access Network' установлена.
+                                    </div>
+                                </div>
+
+                                <div class="bg-surface p-5 rounded-lg border border-border step-card">
+                                    <div class="flex items-center space-x-3 mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-6 h-6 rounded">
+                                            <rect width="100" height="100" rx="20" fill="#001e36"/>
+                                            <text x="50" y="66" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#31A8FF" text-anchor="middle">Ps</text>
+                                        </svg>
+                                        <span class="font-medium text-neutral-200 text-sm">Photoshop</span>
+                                    </div>
+                                    <div class="text-[13px] text-white font-medium menu-path leading-loose">
+                                        File <i class="fas fa-chevron-right"></i> Scripts <i class="fas fa-chevron-right"></i> Browse...
+                                    </div>
+                                    <div class="mt-4">
+                                        <span class="os-text-win hidden"><kbd>Ctrl</kbd> + <kbd>F12</kbd></span>
+                                    </div>
+                                </div>
+
+                                <div class="bg-surface p-5 rounded-lg border border-border step-card">
+                                    <div class="flex items-center space-x-3 mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-6 h-6 rounded">
+                                            <rect width="100" height="100" rx="20" fill="#330000"/>
+                                            <text x="50" y="66" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ff9a00" text-anchor="middle">Ai</text>
+                                        </svg>
+                                        <span class="font-medium text-neutral-200 text-sm">Illustrator</span>
+                                    </div>
+                                    <div class="text-[13px] text-white font-medium menu-path leading-loose">
+                                        File <i class="fas fa-chevron-right"></i> Scripts <i class="fas fa-chevron-right"></i> Other Script...
+                                    </div>
+                                    <div class="mt-4">
+                                        <span class="os-text-win hidden"><kbd>Ctrl</kbd> + <kbd>F12</kbd></span>
+                                        <span class="os-text-mac hidden"><kbd>Cmd</kbd> + <kbd>F12</kbd></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-surface border border-border text-white flex items-center justify-center font-semibold text-lg">3</div>
+                        <div class="flex-1 w-full">
+                            <h4 class="text-lg font-semibold text-white" data-i18n="step3_title">Результат</h4>
+                            <p class="mt-3 text-neutral-400 text-sm" data-i18n="step3_desc">После завершения работы появится диалоговое окно.</p>
+                            <div class="bg-surface p-6 rounded-lg mt-6 border border-border max-w-md">
+                                <p class="text-xs text-neutral-500 uppercase tracking-widest font-medium mb-4 pb-2 border-b border-border" data-i18n="result_list_title">Скрипт создаст:</p>
+                                <ul class="space-y-4 text-sm text-neutral-300">
+                                    <li class="flex items-center group">
+                                        <div class="w-8 flex justify-center"><i class="fas fa-folder text-neutral-500 group-hover:text-white transition-colors"></i></div>
+                                        <span class="font-mono text-xs ml-2">Collected_Fonts_[Name]</span>
+                                    </li>
+                                    <li class="flex items-center group">
+                                        <div class="w-8 flex justify-center"><i class="fas fa-file-alt text-neutral-500 group-hover:text-white transition-colors"></i></div>
+                                        <span class="font-mono text-xs ml-2">fonts_report.txt</span>
+                                    </li>
+                                    <li class="flex items-center group">
+                                        <div class="w-8 flex justify-center"><i class="fas fa-font text-neutral-500 group-hover:text-white transition-colors"></i></div>
+                                        <span class="ml-2" data-i18n="result_fonts">Файлы шрифтов</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="border-t border-border pt-12 pb-8 text-left text-neutral-600 text-xs">
+                <p>&copy; 2025 Font Collector 1.0. <span data-i18n="rights">Все права защищены.</span></p>
+                <p class="mt-2 opacity-60" data-i18n="disclaimer">Данный инструмент предназначен только для личного архивирования проектов.</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        const translations = {
+            ru: {
+                page_title: "Font Collector 1.0",
+                hero_desc: "Скрипт автоматически сканирует ваш проект в After Effects, Photoshop или Illustrator, находит использованные шрифты в системе и копирует их в папку рядом с файлом проекта.",
+                step1_title: "Подготовка проекта",
+                step1_text: "Откройте ваш проект.",
+                important: "Важно",
+                step1_desc_start: "Проект <strong>обязательно</strong> должен быть сохранен на диске. Если это новый файл, сохраните его",
+                step1_desc_end: "перед запуском.",
+                step2_title: "Запуск скрипта",
+                ae_warning: "Этому скрипту требуется доступ к записи файлов. Откройте After Effects 'Preferences' -> 'Scripting and Expressions' и убедитесь, что галочка 'Allow Scripts to Write Files and Access Network' установлена.",
+                step3_title: "Результат",
+                step3_desc: "После завершения работы появится диалоговое окно.",
+                result_list_title: "Скрипт создаст:",
+                result_fonts: "Файлы шрифтов",
+                rights: "Все права защищены.",
+                disclaimer: "Данный инструмент предназначен только для личного архивирования проектов."
+            },
+            en: {
+                page_title: "Font Collector 1.0",
+                hero_desc: "The script automatically scans your project in After Effects, Photoshop, or Illustrator, detects used fonts, and copies them to a folder next to your project file.",
+                step1_title: "Project Preparation",
+                step1_text: "Open your project.",
+                important: "Important",
+                step1_desc_start: "The project <strong>must</strong> be saved on disk. If it's a new file, save it",
+                step1_desc_end: "before running.",
+                step2_title: "Run the Script",
+                ae_warning: "This script requires access to write files. Open After Effects 'Preferences' -> 'Scripting and Expressions' and make sure 'Allow Scripts to Write Files and Access Network' is checked.",
+                step3_title: "Result",
+                step3_desc: "A dialog box will appear upon completion.",
+                result_list_title: "The script will create:",
+                result_fonts: "Font files",
+                rights: "All rights reserved.",
+                disclaimer: "This tool is intended for personal project archiving only."
+            }
+        };
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const btnWin = document.getElementById('btn-win');
+        const btnMac = document.getElementById('btn-mac');
+        
+        const activeClass = ['bg-neutral-200', 'text-black', 'border-neutral-200'];
+        const inactiveClass = ['bg-surface', 'text-neutral-400', 'border-border'];
+
+        function setOS(os) {
+            if (os === 'windows') {
+                btnWin.classList.add(...activeClass);
+                btnWin.classList.remove(...inactiveClass);
+                
+                btnMac.classList.remove(...activeClass);
+                btnMac.classList.add(...inactiveClass);
+            } else {
+                btnMac.classList.add(...activeClass);
+                btnMac.classList.remove(...inactiveClass);
+
+                btnWin.classList.remove(...activeClass);
+                btnWin.classList.add(...inactiveClass);
+            }
+
+            document.querySelectorAll('.os-content-win, .os-text-win').forEach(el => {
+                if (os === 'windows') {
+                    el.classList.remove('hidden');
+                    el.classList.add('fade-in');
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('fade-in');
+                }
+            });
+
+            document.querySelectorAll('.os-content-mac, .os-text-mac').forEach(el => {
+                if (os === 'mac') {
+                    el.classList.remove('hidden');
+                    el.classList.add('fade-in');
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('fade-in');
+                }
+            });
+        }
+
+        function setLang(lang) {
+            var normalized = lang === 'ru' ? 'ru' : 'en';
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[normalized][key]) {
+                    el.innerHTML = translations[normalized][key];
+                }
+            });
+
+            if (translations[normalized].page_title) {
+                document.title = translations[normalized].page_title;
+            }
+
+            document.querySelectorAll('.lang-toggle').forEach(function (btn) {
+                if (btn.dataset.lang === normalized) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.lang-toggle');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    setLang(btn.dataset.lang);
+                });
+            });
+
+            var systemLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            var initialLang = systemLang.indexOf('ru') === 0 ? 'ru' : 'en';
+            setLang(initialLang);
+
+            detectAndSetOS();
+        });
+
+        function detectAndSetOS() {
+            const platform = navigator.platform.toLowerCase();
+            const userAgent = navigator.userAgent.toLowerCase();
+            
+            let detectedOS = 'windows'; 
+
+            if (platform.includes('mac') || userAgent.includes('mac')) {
+                detectedOS = 'mac';
+            } else if (platform.includes('win') || userAgent.includes('win')) {
+                detectedOS = 'windows';
+            }
+
+            setOS(detectedOS);
+        }
+
+    </script>
+</body>
+</html>

@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Font Collector 1.0 — After Effects script that scans your project, builds a clean font report, and prepares handoff files faster.">
+    <meta name="description" content="Font Collector 1.0 копирует используемые в проекте шрифты (After Effects, Photoshop, Illustrator) в папку рядом с файлом и сохраняет отчёт.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://kaurov.net/font-collector.html">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="Font Collector 1.0 | After Effects Script">
-    <meta property="og:description" content="Scan After Effects projects, list every font, and export a ready-to-send report with Font Collector 1.0.">
+    <meta property="og:description" content="Сканирует проект, копирует найденные шрифты в отдельную папку и сохраняет отчёт. Работает в After Effects, Photoshop и Illustrator.">
     <meta property="og:url" content="https://kaurov.net/font-collector.html">
     <meta property="og:image" content="https://kaurov.net/assets/img/preview.jpg">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Font Collector 1.0 | After Effects Script">
-    <meta name="twitter:description" content="Scan After Effects projects, list every font, and export a ready-to-send report with Font Collector 1.0.">
+    <meta name="twitter:description" content="Сканирует проект, копирует найденные шрифты в отдельную папку и сохраняет отчёт. Работает в After Effects, Photoshop и Illustrator.">
     <meta name="twitter:image" content="https://kaurov.net/assets/img/preview.jpg">
     
     <title>Font Collector 1.0 | After Effects Script</title>
@@ -75,17 +75,17 @@
             </div>
             <div class="header-info">
                 <h1>Font Collector 1.0</h1>
-                <div class="subtitle">After Effects script</div>
+                <div class="subtitle">Script for After Effects, Photoshop, Illustrator</div>
                 <div class="about-text">
-                    <p>Font Collector scans your entire After Effects project and pulls every unique font it finds in text layers. You get a clean, deduplicated list that is ready to share with clients or teammates.</p>
-                    <p>The script also maps which comps use each font, so you can quickly locate and swap missing typefaces before rendering or handing off the project.</p>
+                    <p>Font Collector находит шрифты, которые используются в тексте вашего проекта (After Effects, Photoshop или Illustrator), и копирует их в новую папку рядом с файлом проекта.</p>
+                    <p>Скрипт пытается поднять шрифты из системных и Adobe-папок, создаёт отчёт с найденными и пропущенными гарнитурами, чтобы архивировать проекты без проблем с отсутствующими шрифтами.</p>
                 </div>
                 <div class="tag-list">
                     <span class="tag">After Effects</span>
-                    <span class="tag">Workflow</span>
-                    <span class="tag">Font audit</span>
-                    <span class="tag">Project handoff</span>
-                    <span class="tag">ExtendScript</span>
+                    <span class="tag">Photoshop</span>
+                    <span class="tag">Illustrator</span>
+                    <span class="tag">Font backup</span>
+                    <span class="tag">Archive</span>
                 </div>
             </div>
         </div>
@@ -94,25 +94,25 @@
             <h2 class="section-title"><div class="section-title-wrapper"><span>What it does</span></div></h2>
             <div class="section-content">
                 <div class="content-text">
-                    <h2>Keep every font under control</h2>
-                    <p>Font Collector helps you avoid surprises before final render or project handoff. Run it once and receive a compact text report with every typeface currently used in the project.</p>
+                    <h2>Сохраняет шрифты вместе с проектом</h2>
+                    <p>Запустите скрипт, и он соберёт все шрифты, использованные в тексте проекта, чтобы спустя время можно было открыть архив без предупреждений о пропавших гарнитурах.</p>
                     <ul class="feature-list">
-                        <li>Scans the whole project and collects unique font families from text layers.</li>
-                        <li>Shows how many times each font appears and which comps it belongs to.</li>
-                        <li>Exports a UTF-8 report that you can share with clients or archive.</li>
-                        <li>Highlights potentially missing fonts so you can swap or relink them early.</li>
+                        <li>Определяет шрифты в текстовых слоях After Effects, Photoshop и Illustrator.</li>
+                        <li>Ищет файлы шрифтов в системных и Adobe-папках (Windows и macOS) и копирует их в папку рядом с проектом.</li>
+                        <li>Создаёт отчёт с найденными и отсутствующими шрифтами, чтобы понять, что нужно докопировать.</li>
+                        <li>Работает только с сохранёнными проектами: нужна запись файлов (в AE включите “Allow Scripts to Write Files and Access Network”).</li>
                     </ul>
                 </div>
                 <div class="content-image">
                     <div class="download-card">
                         <div class="download-card__heading">Quick start</div>
                         <ol class="download-steps">
-                            <li>Open your project and run Font Collector 1.0.</li>
-                            <li>Choose where to save the TXT report.</li>
-                            <li>Send the exported list to clients or teammates.</li>
+                            <li>Сохраните проект и запустите Font Collector 1.0.</li>
+                            <li>Дождитесь копирования шрифтов в папку <strong>Collected_Fonts_&lt;имя проекта&gt;</strong>.</li>
+                            <li>Проверьте <strong>fonts_report.txt</strong>: там список найденных и пропущенных шрифтов.</li>
                         </ol>
                         <div class="download-actions">
-                            <a class="button button--primary" href="https://github.com/evkaurov/kaurov/raw/main/assets/scripts/font-collector-1-0.jsx" target="_blank" rel="noopener noreferrer">Download script</a>
+                            <a class="button button--primary" href="fc/KAUROV%20Font%20Collector%201.0.jsx" download>Download script</a>
                             <a class="button button--ghost" href="mailto:evkaurov@gmail.com">Need help?</a>
                         </div>
                     </div>
