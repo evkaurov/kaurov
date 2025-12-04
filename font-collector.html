@@ -46,9 +46,11 @@
 </head>
 <body>
     <div class="lang-toggle-bar-mobile">
-        <a class="lang-toggle active" href="font-collector.html">eng</a>
-        <a class="lang-toggle" href="ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
-        <a class="lang-toggle" href="index.html">portfolio</a>
+        <div class="lang-toggle-row">
+            <a class="lang-toggle active" href="font-collector.html">eng</a>
+            <a class="lang-toggle" href="ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
+        </div>
+        <a class="button button--ghost portfolio-button" href="index.html">Portfolio</a>
     </div>
     <div class="container">
         <div class="sidebar">
@@ -57,12 +59,11 @@
             </div>
             <a class="nav-item" data-target="overview">Overview</a>
             <a class="nav-item" data-target="features">What it does</a>
-            <a class="nav-item" data-target="download">Download</a>
             <div class="social-icons">
                 <a class="lang-toggle active" href="font-collector.html">eng</a>
                 <a class="lang-toggle" href="ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
-                <a class="lang-toggle" href="index.html">portfolio</a>
             </div>
+            <a class="button button--ghost portfolio-button" href="index.html">Portfolio</a>
         </div>
 
         <div class="header" id="overview">
@@ -88,7 +89,6 @@
                 </div>
                 <div class="cta-row">
                     <a class="button button--primary" href="https://github.com/evkaurov/kaurov/raw/main/assets/scripts/font-collector-1-0.jsx" target="_blank" rel="noopener noreferrer">Download from GitHub</a>
-                    <a class="button button--ghost" href="#download">See download details</a>
                 </div>
             </div>
         </div>
@@ -117,27 +117,6 @@
                         <div class="download-actions">
                             <a class="button button--primary" href="https://github.com/evkaurov/kaurov/raw/main/assets/scripts/font-collector-1-0.jsx" target="_blank" rel="noopener noreferrer">Download script</a>
                             <a class="button button--ghost" href="mailto:evkaurov@gmail.com">Need help?</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section" id="download">
-            <h2 class="section-title"><div class="section-title-wrapper"><span>Download</span></div></h2>
-            <div class="section-content">
-                <div class="content-text">
-                    <h2>Get Font Collector 1.0</h2>
-                    <p>The script is a lightweight JSX file compatible with modern After Effects versions. Keep it in your Scripts folder or run it from the File &gt; Scripts menu whenever you need a font report.</p>
-                    <p>If you notice a project that still throws font warnings, rerun the script after replacing typefaces to generate a fresh list.</p>
-                </div>
-                <div class="content-image">
-                    <div class="download-card">
-                        <div class="download-card__title">Font Collector 1.0</div>
-                        <div class="download-card__meta">Size: ~6 KB • Format: JSX • Platform: Windows / macOS</div>
-                        <div class="download-actions">
-                            <a class="button button--primary" href="https://github.com/evkaurov/kaurov/raw/main/assets/scripts/font-collector-1-0.jsx" target="_blank" rel="noopener noreferrer">Download from GitHub</a>
-                            <a class="button button--ghost" href="index.html">Back to main page</a>
                         </div>
                     </div>
                 </div>
