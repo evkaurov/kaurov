@@ -762,3 +762,9 @@
             border-color: #fff;
             color: #000;
         }
+
+        .not-found__logo {
+            margin-top: calc(var(--nf-gap) * -0.5);
+            display: grid;
+            place-items: center;
+        }
