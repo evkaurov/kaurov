@@ -894,19 +894,6 @@
             color: #000;
         }
 
-        .sidebar .portfolio-button {
-            width: 100%;
-            justify-content: center;
-            margin-top: 14px;
-        }
-
-        .lang-toggle-bar-mobile .portfolio-button {
-            width: max-content;
-            align-self: flex-end;
-            padding: 10px 16px;
-            font-size: 12px;
-        }
-
         .feature-list {
             display: grid;
             gap: 10px;
