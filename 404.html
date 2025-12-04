@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://kaurov.net/404.html">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <!-- Google tag (gtag.js) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZXYG5YXJK"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,7 +15,7 @@
         gtag('config', 'G-VZXYG5YXJK');
     </script>
     <title>Page not found | Eugene Kaurov</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body class="not-found-page">
     <div class="container not-found-container">
@@ -27,12 +26,12 @@
                 <div class="not-found__headline">Страница не найдена</div>
             </div>
             <div class="not-found__actions">
-                <a class="not-found__link" href="index.html">Go to the main page</a>
-                <a class="not-found__link" href="ru.html">Перейти на главную страницу</a>
+                <a class="not-found__link" href="/" onclick="localStorage.setItem('preferredLang', 'en')">Go to the main page</a>
+                <a class="not-found__link" href="/ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">Перейти на главную страницу</a>
             </div>
             <div class="not-found__logo">
-                <a class="logo" href="index.html">
-                    <img src="assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+                <a class="logo" href="/" onclick="localStorage.setItem('preferredLang', 'en')">
+                    <img src="/assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
                 </a>
             </div>
         </div>
