@@ -764,7 +764,15 @@
         }
 
         .not-found__logo {
-            display: grid;
-            place-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             min-height: calc(clamp(34px, 4.2vw, 52px) * 1.5);
+        }
+
+        .not-found__logo .logo {
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
