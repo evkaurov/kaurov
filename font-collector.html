@@ -75,10 +75,9 @@
             </div>
             <div class="header-info">
                 <h1>Font Collector 1.0</h1>
-                <div class="subtitle">Script for After Effects, Photoshop, Illustrator</div>
+                <div class="subtitle">Утилита для автоматического сбора шрифтов в After Effects, Photoshop и Illustrator.</div>
                 <div class="about-text">
-                    <p>Font Collector находит шрифты, которые используются в тексте вашего проекта (After Effects, Photoshop или Illustrator), и копирует их в новую папку рядом с файлом проекта.</p>
-                    <p>Скрипт пытается поднять шрифты из системных и Adobe-папок, создаёт отчёт с найденными и пропущенными гарнитурами, чтобы архивировать проекты без проблем с отсутствующими шрифтами.</p>
+                    <p>Больше никаких «Missing Fonts» при открытии старых проектов. Скрипт сканирует текстовые слои, находит нужные файлы шрифтов в системе (Windows/macOS) и копирует их в папку рядом с проектом. Идеально для локальной архивации.</p>
                 </div>
                 <div class="tag-list">
                     <span class="tag">After Effects</span>
@@ -91,25 +90,26 @@
         </div>
 
         <div class="section" id="features">
-            <h2 class="section-title"><div class="section-title-wrapper"><span>What it does</span></div></h2>
+            <h2 class="section-title"><div class="section-title-wrapper"><span>Возможности</span></div></h2>
             <div class="section-content">
                 <div class="content-text">
                     <h2>Сохраняет шрифты вместе с проектом</h2>
                     <p>Запустите скрипт, и он соберёт все шрифты, использованные в тексте проекта, чтобы спустя время можно было открыть архив без предупреждений о пропавших гарнитурах.</p>
                     <ul class="feature-list">
-                        <li>Определяет шрифты в текстовых слоях After Effects, Photoshop и Illustrator.</li>
-                        <li>Ищет файлы шрифтов в системных и Adobe-папках (Windows и macOS) и копирует их в папку рядом с проектом.</li>
-                        <li>Создаёт отчёт с найденными и отсутствующими шрифтами, чтобы понять, что нужно докопировать.</li>
-                        <li>Работает только с сохранёнными проектами: нужна запись файлов (в AE включите “Allow Scripts to Write Files and Access Network”).</li>
+                        <li><strong>Мультиформатность.</strong> Один файл .jsx работает сразу в трёх программах и сам понимает, где запущен.</li>
+                        <li><strong>Глубокий поиск.</strong> Сканирует не только системные папки, но и скрытые директории Adobe и CoreSync.</li>
+                        <li><strong>Умный подбор.</strong> Пытается собрать всё семейство, чтобы не потерять начертания Bold, Italic и т.д.</li>
+                        <li><strong>Полный отчёт.</strong> Создаёт fonts_report.txt с найденными файлами и предупреждениями об отсутствующих шрифтах.</li>
                     </ul>
                 </div>
                 <div class="content-image">
                     <div class="download-card">
-                        <div class="download-card__heading">Quick start</div>
+                        <div class="download-card__heading">Как пользоваться</div>
                         <ol class="download-steps">
-                            <li>Сохраните проект и запустите Font Collector 1.0.</li>
-                            <li>Дождитесь копирования шрифтов в папку <strong>Collected_Fonts_&lt;имя проекта&gt;</strong>.</li>
-                            <li>Проверьте <strong>fonts_report.txt</strong>: там список найденных и пропущенных шрифтов.</li>
+                            <li>Сохраните проект, чтобы скрипт понял, куда складывать файлы.</li>
+                            <li>Запустите Font Collector 1.0.jsx через File &gt; Scripts.</li>
+                            <li>Дождитесь сообщения “Done!”.</li>
+                            <li>Рядом с проектом появится папка <strong>Collected_Fonts</strong> с шрифтами и отчётом.</li>
                         </ol>
                         <div class="download-actions">
                             <a class="button button--primary" href="fc/KAUROV%20Font%20Collector%201.0.jsx" download>Download script</a>
