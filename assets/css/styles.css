@@ -209,6 +209,15 @@
             color: #999;
         }
 
+        .header-info .about-text {
+            margin-top: 12px;
+            display: grid;
+            gap: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
         /* Section */
         .section {
             grid-column: 3 / -1;
