@@ -685,3 +685,73 @@
             filter: grayscale(1) brightness(0.6);
             opacity: 0.7;
         }
+
+        /* 404 Page */
+        .not-found-page {
+            min-height: 100vh;
+        }
+
+        .not-found-page .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .not-found {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .not-found .logo {
+            width: clamp(140px, 18vw, 220px);
+            margin: 0 auto 6px;
+        }
+
+        .not-found__code {
+            font-size: clamp(54px, 12vw, 110px);
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            line-height: 1;
+        }
+
+        .not-found__headline {
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .not-found__actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .not-found__link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid #444;
+            background-color: #151515;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .not-found__link:hover {
+            background-color: #fff;
+            border-color: #fff;
+            color: #000;
+        }
