@@ -1023,10 +1023,10 @@
 
         .support-link--donatty:hover {
             background: linear-gradient(90deg, #f15a55 0%, #5521c6 100%);
-            border-color: transparent;
+            border-color: #444;
         }
 
         .support-link--kofi:hover {
             background: #467ceb;
-            border-color: transparent;
+            border-color: #444;
         }
