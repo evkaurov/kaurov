@@ -905,27 +905,20 @@
             display: grid;
             gap: 10px;
             margin-top: 16px;
-            padding-left: 0;
-            list-style: none;
+            padding-left: 20px;
+            list-style: disc;
         }
 
         .feature-list li {
-            position: relative;
-            padding-left: 18px;
+            position: static;
+            padding-left: 0;
             font-size: 14px;
             line-height: 1.6;
             color: #cfcfcf;
         }
 
         .feature-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #d7ff7c 0%, #7ad0ff 100%);
+            content: none;
         }
 
         .download-card {
