@@ -884,9 +884,9 @@
         }
 
         .button--primary:hover {
-            background-color: #d7ff7c;
-            border-color: #d7ff7c;
-            color: #0e0e0e;
+            background-color: #f02c01;
+            border-color: #f02c01;
+            color: #fff;
         }
 
         .button--ghost {
