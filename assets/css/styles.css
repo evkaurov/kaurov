@@ -410,9 +410,17 @@
             grid-column: 3 / 7;
         }
 
+        #features .content-text {
+            grid-column: 3 / -1;
+        }
+
         @media (max-width: 900px) {
             .content-text {
                 grid-column: 1 / 4;
+            }
+
+            #features .content-text {
+                grid-column: 1 / -1;
             }
         }
 
