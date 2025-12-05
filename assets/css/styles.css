@@ -1013,11 +1013,20 @@
         }
 
         .support-link:hover {
-            background: #fff;
-            border-color: #fff;
-            color: #000;
+            color: #fff;
+            border-color: #444;
         }
 
         .support-link:hover img {
-            filter: grayscale(1) brightness(0.1);
+            filter: none;
+        }
+
+        .support-link--donatty:hover {
+            background: linear-gradient(90deg, #5521c6 0%, #f15a55 100%);
+            border-color: transparent;
+        }
+
+        .support-link--kofi:hover {
+            background: #467ceb;
+            border-color: transparent;
         }
