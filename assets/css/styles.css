@@ -162,6 +162,10 @@
             align-items: start;
         }
 
+        #overview.header {
+            margin-bottom: 0;
+        }
+
         #about.header {
             margin-bottom: 0;
         }
@@ -233,6 +237,10 @@
         .section {
             grid-column: 3 / -1;
             margin-bottom: 40px;
+        }
+
+        #features.section {
+            margin-bottom: 0;
         }
 
         @media (max-width: 600px) {
