@@ -1022,7 +1022,7 @@
         }
 
         .support-link--donatty:hover {
-            background: linear-gradient(90deg, #5521c6 0%, #f15a55 100%);
+            background: linear-gradient(90deg, #f15a55 0%, #5521c6 100%);
             border-color: transparent;
         }
 
