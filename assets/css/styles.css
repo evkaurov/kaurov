@@ -935,7 +935,6 @@
             border-radius: 16px;
             border: 1px solid #2f2f2f;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
         }
 
         .download-card__heading,
