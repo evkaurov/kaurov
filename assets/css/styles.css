@@ -985,6 +985,10 @@
             }
         }
 
+        .support-actions {
+            justify-content: flex-end;
+        }
+
         .support-link {
             display: inline-flex;
             align-items: center;
