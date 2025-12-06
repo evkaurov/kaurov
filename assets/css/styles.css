@@ -136,14 +136,16 @@
             right: 10px;
             z-index: 1000;
             display: none;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
         }
 
         .lang-toggle-row {
             display: flex;
             gap: 8px;
+            flex-wrap: nowrap;
         }
 
         @media (max-width: 600px) {
