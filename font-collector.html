@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Font Collector 1.0 копирует используемые в проекте шрифты (After Effects, Photoshop, Illustrator) в папку рядом с файлом и сохраняет отчёт.">
+    <meta name="description"
+        content="Font Collector 1.0 копирует используемые в проекте шрифты (After Effects, Photoshop, Illustrator) в папку рядом с файлом и сохраняет отчёт.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://kaurov.net/font-collector.html">
-    
+
     <meta property="og:type" content="website">
     <meta property="og:title" content="Font Collector 1.0 | After Effects Script">
-    <meta property="og:description" content="Сканирует проект, копирует найденные шрифты в отдельную папку и сохраняет отчёт. Работает в After Effects, Photoshop и Illustrator.">
+    <meta property="og:description"
+        content="Сканирует проект, копирует найденные шрифты в отдельную папку и сохраняет отчёт. Работает в After Effects, Photoshop и Illustrator.">
     <meta property="og:url" content="https://kaurov.net/font-collector.html">
     <meta property="og:image" content="https://kaurov.net/assets/img/preview.jpg">
-    
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Font Collector 1.0 | After Effects Script">
-    <meta name="twitter:description" content="Сканирует проект, копирует найденные шрифты в отдельную папку и сохраняет отчёт. Работает в After Effects, Photoshop и Illustrator.">
+    <meta name="twitter:description"
+        content="Сканирует проект, копирует найденные шрифты в отдельную папку и сохраняет отчёт. Работает в After Effects, Photoshop и Illustrator.">
     <meta name="twitter:image" content="https://kaurov.net/assets/img/preview.jpg">
-    
+
     <title>Font Collector 1.0 | After Effects Script</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZXYG5YXJK"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-VZXYG5YXJK');
     </script>
     <link rel="stylesheet" href="assets/css/styles.css?v=1.3">
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.nav-item[data-target]').forEach(function(link) {
-                link.addEventListener('click', function(e) {
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.nav-item[data-target]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('data-target');
                     const targetElement = document.getElementById(targetId);
@@ -44,10 +48,13 @@
         });
     </script>
 </head>
+
 <body>
-    <div class="lang-toggle-global">
-        <a class="lang-toggle active" href="font-collector.html">eng</a>
-        <a class="lang-toggle" href="ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
+    <div class="lang-wrapper">
+        <div class="lang-toggle-global">
+            <a class="lang-toggle active" href="font-collector.html">eng</a>
+            <a class="lang-toggle" href="ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
+        </div>
     </div>
     <div class="container">
         <div class="sidebar">
@@ -64,40 +71,54 @@
             </div>
             <div class="header-info">
                 <h1>Font Collector 1.0</h1>
-                <div class="subtitle">Утилита для автоматического сбора шрифтов в After Effects, Photoshop и Illustrator.</div>
+                <div class="subtitle">Утилита для автоматического сбора шрифтов в After Effects, Photoshop и
+                    Illustrator.</div>
                 <div class="about-text">
-                    <p>Больше никаких «Missing Fonts» при открытии старых проектов. Скрипт сканирует текстовые слои, находит нужные файлы шрифтов в системе (Windows/macOS) и копирует их в папку рядом с проектом. Идеально для локальной архивации.</p>
+                    <p>Больше никаких «Missing Fonts» при открытии старых проектов. Скрипт сканирует текстовые слои,
+                        находит нужные файлы шрифтов в системе (Windows/macOS) и копирует их в папку рядом с проектом.
+                        Идеально для локальной архивации.</p>
                 </div>
                 <div class="cta-row">
-                    <a class="button button--primary" href="fc/KAUROV%20Font%20Collector%201.0.jsx" download>Скачать скрипт</a>
+                    <a class="button button--primary" href="fc/KAUROV%20Font%20Collector%201.0.jsx" download>Скачать
+                        скрипт</a>
                 </div>
             </div>
         </div>
 
         <div class="section" id="features">
-            <h2 class="section-title"><div class="section-title-wrapper"><span>Возможности</span></div></h2>
+            <h2 class="section-title">
+                <div class="section-title-wrapper"><span>Возможности</span></div>
+            </h2>
             <div class="section-content">
                 <div class="content-text">
                     <h2>Сохраняет шрифты вместе с проектом</h2>
-                    <p>Запустите скрипт, и он соберёт все шрифты, использованные в тексте проекта, чтобы спустя время можно было открыть архив без предупреждений о пропавших гарнитурах.</p>
+                    <p>Запустите скрипт, и он соберёт все шрифты, использованные в тексте проекта, чтобы спустя время
+                        можно было открыть архив без предупреждений о пропавших гарнитурах.</p>
                     <ul class="feature-list">
-                        <li><strong>Мультиформатность.</strong> Один файл .jsxbin работает сразу в трёх программах и сам понимает, где запущен.</li>
-                        <li><strong>Глубокий поиск.</strong> Сканирует не только системные папки, но и скрытые директории Adobe и CoreSync.</li>
-                        <li><strong>Умный подбор.</strong> Пытается собрать всё семейство, чтобы не потерять начертания Bold, Italic и т.д.</li>
-                        <li><strong>Полный отчёт.</strong> Создаёт fonts_report.txt с найденными файлами и предупреждениями об отсутствующих шрифтах.</li>
+                        <li><strong>Мультиформатность.</strong> Один файл .jsxbin работает сразу в трёх программах и сам
+                            понимает, где запущен.</li>
+                        <li><strong>Глубокий поиск.</strong> Сканирует не только системные папки, но и скрытые
+                            директории Adobe и CoreSync.</li>
+                        <li><strong>Умный подбор.</strong> Пытается собрать всё семейство, чтобы не потерять начертания
+                            Bold, Italic и т.д.</li>
+                        <li><strong>Полный отчёт.</strong> Создаёт fonts_report.txt с найденными файлами и
+                            предупреждениями об отсутствующих шрифтах.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="section" id="support">
-            <h2 class="section-title"><div class="section-title-wrapper"><span>Отблагодарить</span></div></h2>
+            <h2 class="section-title">
+                <div class="section-title-wrapper"><span>Отблагодарить</span></div>
+            </h2>
             <div class="section-content">
                 <div class="support-cards">
                     <div class="download-card">
                         <p class="download-card__meta">Если скрипт сэкономил вам время, буду рад вашей поддержке.</p>
                         <div class="download-actions support-actions">
-                            <a class="support-link support-link--donatty" href="https://donatty.com/kaurov" target="_blank" rel="noopener">
+                            <a class="support-link support-link--donatty" href="https://donatty.com/kaurov"
+                                target="_blank" rel="noopener">
                                 <span>Поддержать разово</span>
                                 <img src="assets/img/logo-donatty.svg" alt="Donatty">
                             </a>
@@ -106,7 +127,8 @@
                     <div class="download-card">
                         <p class="download-card__meta">Если у вас нет российской карты поддержать можно здесь.</p>
                         <div class="download-actions support-actions">
-                            <a class="support-link support-link--kofi" href="https://ko-fi.com/kaurov" target="_blank" rel="noopener">
+                            <a class="support-link support-link--kofi" href="https://ko-fi.com/kaurov" target="_blank"
+                                rel="noopener">
                                 <span>Поддержать разово</span>
                                 <img src="assets/img/logo-kofi.svg" alt="Ko-fi">
                             </a>
@@ -117,7 +139,9 @@
         </div>
 
         <div class="section" id="contacts">
-            <h2 class="section-title"><div class="section-title-wrapper"><span>Контакты</span></div></h2>
+            <h2 class="section-title">
+                <div class="section-title-wrapper"><span>Контакты</span></div>
+            </h2>
             <div class="contacts-content">
                 <div class="contact-info">
                     <p>По любым вопросам пишите на email или в Telegram</p>
@@ -141,19 +165,23 @@
                 <div class="social-section">
                     <div class="social-title">Я в социальных сетях</div>
                     <div class="social-links">
-                        <a class="social-link" href="https://www.instagram.com/kaurov" target="_blank" rel="noopener noreferrer">
+                        <a class="social-link" href="https://www.instagram.com/kaurov" target="_blank"
+                            rel="noopener noreferrer">
                             <img src="assets/img/instagram.svg" alt="Instagram">
                         </a>
                         <a class="social-link" href="https://t.me/ekaurov" target="_blank" rel="noopener noreferrer">
                             <img src="assets/img/telegram.svg" alt="Telegram">
                         </a>
-                        <a class="social-link" href="http://www.behance.net/Kaurov" target="_blank" rel="noopener noreferrer">
+                        <a class="social-link" href="http://www.behance.net/Kaurov" target="_blank"
+                            rel="noopener noreferrer">
                             <img src="assets/img/behance.svg" alt="Behance">
                         </a>
-                        <a class="social-link" href="https://vimeo.com/evkaurov" target="_blank" rel="noopener noreferrer">
+                        <a class="social-link" href="https://vimeo.com/evkaurov" target="_blank"
+                            rel="noopener noreferrer">
                             <img src="assets/img/vimeo.svg" alt="Vimeo">
                         </a>
-                        <a class="social-link" href="https://www.facebook.com/evgeniy.kaurov" target="_blank" rel="noopener noreferrer">
+                        <a class="social-link" href="https://www.facebook.com/evgeniy.kaurov" target="_blank"
+                            rel="noopener noreferrer">
                             <img src="assets/img/facebook.svg" alt="Facebook">
                         </a>
                     </div>
@@ -162,4 +190,5 @@
         </div>
     </div>
 </body>
+
 </html>
