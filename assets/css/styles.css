@@ -884,6 +884,74 @@
             content: none;
         }
 
+        .design-tools-grid {
+            grid-column: 3 / -1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--gap);
+        }
+
+        @media (max-width: 900px) {
+            .design-tools-grid {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .design-tools-grid {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .tool-card {
+            display: grid;
+            gap: 12px;
+            border: 1px solid #2f2f2f;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: #444;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+        }
+
+        .tool-card__image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #0f0f0f;
+        }
+
+        .tool-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tool-card__info {
+            display: grid;
+            gap: 4px;
+            padding: 0 16px 16px 16px;
+        }
+
+        .tool-card__info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .tool-card__info p {
+            margin: 0;
+            font-size: 13px;
+            color: #c3c3c3;
+        }
+
         .download-card {
             display: grid;
             gap: 12px;
