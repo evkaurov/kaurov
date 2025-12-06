@@ -885,7 +885,7 @@
         }
 
         .design-tools-grid {
-            grid-column: 3 / -1;
+            grid-column: 3 / 11;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: var(--gap);
