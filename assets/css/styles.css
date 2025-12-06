@@ -891,14 +891,29 @@
             gap: var(--gap);
         }
 
+        .design-tools-intro {
+            grid-column: 3 / -1;
+            display: grid;
+            gap: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
         @media (max-width: 900px) {
             .design-tools-grid {
+                grid-column: 1 / -1;
+            }
+            .design-tools-intro {
                 grid-column: 1 / -1;
             }
         }
 
         @media (max-width: 600px) {
             .design-tools-grid {
+                grid-column: 1 / -1;
+            }
+            .design-tools-intro {
                 grid-column: 1 / -1;
             }
         }
