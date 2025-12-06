@@ -40,6 +40,7 @@
             grid-template-columns: repeat(var(--grid-cols), 1fr);
             gap: var(--gap);
             padding: var(--padding);
+            position: relative;
         }
 
         @media (max-width: 600px) {
@@ -94,12 +95,6 @@
             color: #fff;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
         .lang-toggle {
             padding: 4px 10px;
             font-size: 11px;
@@ -130,28 +125,14 @@
             border-color: #fff;
         }
 
-        .lang-toggle-bar-mobile {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            display: none;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 8px;
-        }
-
-        .lang-toggle-row {
+        .lang-toggle-global {
+            position: absolute;
+            top: clamp(8px, 2vw, 18px);
+            right: clamp(8px, 2vw, 18px);
             display: flex;
+            align-items: center;
             gap: 8px;
-            flex-wrap: nowrap;
-        }
-
-        @media (max-width: 600px) {
-            .lang-toggle-bar-mobile {
-                display: flex;
-            }
+            z-index: 300;
         }
 
         /* Header */
