@@ -1200,10 +1200,16 @@
             margin-bottom: 18px;
         }
 
-        .modal-support-grid {
-            margin-top: 0;
-        }
-
         .modal-open {
             overflow: hidden;
+        }
+
+        .modal-support-grid {
+            margin-top: 0;
+            grid-template-columns: repeat(var(--grid-cols), 1fr);
+        }
+
+        .modal-support-grid .support-intro,
+        .modal-support-grid .support-cards {
+            grid-column: 3 / -1;
         }
