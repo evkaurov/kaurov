@@ -1043,23 +1043,6 @@
             border-color: #444;
         }
 
-        .support-note {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .support-note__link {
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .support-inline-logo {
-            height: 18px;
-            width: auto;
-            display: block;
-        }
-
         .support-link--kofi:hover {
             background: #467ceb;
             border-color: #444;
