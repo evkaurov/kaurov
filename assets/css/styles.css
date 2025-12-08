@@ -1161,7 +1161,8 @@
 
         .modal__dialog {
             position: relative;
-            width: min(900px, 100%);
+            width: 900px;
+            max-width: calc(100% - 40px);
             background: #111;
             border: 1px solid #2f2f2f;
             border-radius: 16px;
