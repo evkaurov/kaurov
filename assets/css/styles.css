@@ -1034,6 +1034,12 @@
             padding: clamp(18px, 3vw, 26px);
         }
 
+        .donate-badge-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .donate-badge {
             display: inline-flex;
             align-items: center;
