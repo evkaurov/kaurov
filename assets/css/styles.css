@@ -1161,7 +1161,7 @@
 
         .modal__dialog {
             position: relative;
-            width: min(900px, 100%);
+            width: min(var(--container), 100%);
             background: #111;
             border: 1px solid #2f2f2f;
             border-radius: 16px;
@@ -1206,16 +1206,10 @@
 
         .modal-support-grid {
             margin-top: 0;
-            grid-template-columns: repeat(8, 1fr);
-        }
-
-        @media (max-width: 900px) {
-            .modal-support-grid {
-                grid-template-columns: repeat(var(--grid-cols), 1fr);
-            }
+            grid-template-columns: repeat(var(--grid-cols), 1fr);
         }
 
         .modal-support-grid .support-intro,
         .modal-support-grid .support-cards {
-            grid-column: 1 / -1;
+            grid-column: 3 / -1;
         }
