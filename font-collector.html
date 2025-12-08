@@ -45,6 +45,41 @@
                     }
                 });
             });
+
+            const body = document.body;
+            const modal = document.querySelector('#download-modal');
+            const downloadButton = document.querySelector('.button--primary[data-modal-target="#download-modal"]');
+            const closeModalElements = modal ? modal.querySelectorAll('[data-close-modal]') : [];
+
+            function openModal() {
+                if (!modal) return;
+                modal.classList.add('modal--open');
+                body.classList.add('modal-open');
+                modal.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove('modal--open');
+                body.classList.remove('modal-open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+
+            if (downloadButton) {
+                downloadButton.addEventListener('click', function () {
+                    openModal();
+                });
+            }
+
+            closeModalElements.forEach(function (el) {
+                el.addEventListener('click', closeModal);
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
         });
     </script>
 </head>
@@ -81,7 +116,7 @@
                         Идеально для локальной архивации.</p>
                 </div>
                 <div class="cta-row">
-                    <a class="button button--primary" href="https://github.com/evkaurov/font-collector/releases/latest/download/KAUROV.Font.Collector.zip" download>Скачать
+                    <a class="button button--primary" href="https://github.com/evkaurov/font-collector/releases/latest/download/KAUROV.Font.Collector.zip" download data-modal-target="#download-modal">Скачать
                         скрипт</a>
                 </div>
             </div>
@@ -208,6 +243,63 @@
                             rel="noopener noreferrer">
                             <img src="assets/img/facebook.svg" alt="Facebook">
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="download-modal" aria-hidden="true">
+        <div class="modal__overlay" data-close-modal></div>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="download-modal-title">
+            <button class="modal__close" type="button" aria-label="Закрыть" data-close-modal>×</button>
+            <div class="modal__content">
+                <h3 class="modal__title" id="download-modal-title">Скачивание началось. Спасибо!</h3>
+                <div class="section-content modal-support-grid">
+                    <p class="support-intro">Если хотите, можете поддержать разработку моих инструментов. Выберите
+                        вариант,
+                        который вам подходит.</p>
+                    <div class="support-cards">
+                        <div class="download-card donate-card">
+                            <div class="donate-badge-row">
+                                <span class="donate-icon donate-icon--ru" aria-hidden="true">
+                                    <img src="assets/img/icon-russia.svg" alt="">
+                                </span>
+                                <span class="donate-badge donate-badge--ru">
+                                    <span class="donate-badge__text">Я из России</span>
+                                </span>
+                            </div>
+                            <h3 class="donate-title">Оплата через Donatty</h3>
+                            <p class="download-card__meta">Подходит для карт российских банков, СБП и других локальных
+                                способов оплаты.</p>
+                            <div class="download-actions support-actions">
+                                <a class="donate-button donate-button--donatty" href="https://donatty.com/kaurov"
+                                    target="_blank" rel="noopener">
+                                    <span>Поддержать из России</span>
+                                    <img src="assets/img/logo-donatty.svg" alt="Donatty">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="download-card donate-card">
+                            <div class="donate-badge-row">
+                                <span class="donate-icon donate-icon--intl" aria-hidden="true">
+                                    <img src="assets/img/icon-globe.svg" alt="">
+                                </span>
+                                <span class="donate-badge donate-badge--intl">
+                                    <span class="donate-badge__text">Я из другой страны</span>
+                                </span>
+                            </div>
+                            <h3 class="donate-title">Оплата через Ko-fi</h3>
+                            <p class="download-card__meta">Подходит для банковских карт, PayPal и других международных
+                                способов оплаты.</p>
+                            <div class="download-actions support-actions">
+                                <a class="donate-button donate-button--kofi" href="https://ko-fi.com/kaurov"
+                                    target="_blank" rel="noopener">
+                                    <span>Support via Ko-fi</span>
+                                    <img src="assets/img/logo-kofi.svg" alt="Ko-fi">
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
