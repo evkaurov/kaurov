@@ -1057,15 +1057,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             font-size: 13px;
         }
 
         .donate-icon img {
-            width: 14px;
-            height: 14px;
+            width: 18px;
+            height: 18px;
             display: block;
         }
 
@@ -1085,18 +1084,10 @@
             color: #7af0b8;
         }
 
-        .donate-icon--ru {
-            background: #1f6b4b;
-        }
-
         .donate-badge--intl {
             background: #1a1a1f;
             border: 1px solid #2b2b30;
             color: #c6c6c6;
-        }
-
-        .donate-icon--intl {
-            background: #2b2b30;
         }
 
         .donate-button {
