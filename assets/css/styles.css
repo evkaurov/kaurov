@@ -1202,6 +1202,12 @@
 
         .modal-support-grid {
             margin-top: 0;
+            grid-template-columns: repeat(calc(var(--grid-cols) - 2), 1fr);
+        }
+
+        .modal-support-grid .support-intro,
+        .modal-support-grid .support-cards {
+            grid-column: 1 / -1;
         }
 
         .modal-open {
