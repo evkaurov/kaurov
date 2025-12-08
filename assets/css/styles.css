@@ -1206,7 +1206,13 @@
 
         .modal-support-grid {
             margin-top: 0;
-            grid-template-columns: repeat(calc(var(--grid-cols) - 2), 1fr);
+            grid-template-columns: repeat(8, 1fr);
+        }
+
+        @media (max-width: 900px) {
+            .modal-support-grid {
+                grid-template-columns: repeat(var(--grid-cols), 1fr);
+            }
         }
 
         .modal-support-grid .support-intro,
