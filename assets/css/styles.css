@@ -1063,6 +1063,12 @@
             font-size: 13px;
         }
 
+        .donate-icon img {
+            width: 14px;
+            height: 14px;
+            display: block;
+        }
+
         .donate-badge__text {
             letter-spacing: 0.02em;
         }
