@@ -189,15 +189,14 @@
             height: 38px;
             padding: 0;
             border-radius: 12px;
-            border: 1px solid #2f2f2f;
-            background: #0f0f0f;
+            border: none;
+            background: transparent;
             cursor: pointer;
             transition: border-color 0.2s ease, background-color 0.2s ease;
         }
 
         .mobile-menu-toggle:hover {
-            border-color: #444;
-            background: #1a1a1a;
+            background: transparent;
         }
 
         .mobile-menu-toggle:focus-visible {
