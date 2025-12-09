@@ -258,6 +258,7 @@
             font-size: 15px;
             font-weight: 600;
             letter-spacing: 0.01em;
+            white-space: nowrap;
         }
 
         .mobile-menu__list .nav-item:hover {

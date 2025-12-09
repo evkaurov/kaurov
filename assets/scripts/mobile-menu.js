@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
     menuList.innerHTML = '';
     navItems.forEach(function (item) {
         const clone = item.cloneNode(true);
+        const raw = item.innerHTML || '';
+        const withSpaces = raw.replace(/<br\s*\/?>/gi, ' ');
+        const cleanText = withSpaces.replace(/\s+/g, ' ').trim();
+        clone.textContent = cleanText;
         clone.classList.add('mobile-menu__link');
         menuList.appendChild(clone);
     });
