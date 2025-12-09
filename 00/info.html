@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Manual — Boards Importer for Eagle</title>
+  <style>
+    :root {
+      --header-height: 60px;
+      --field: 40px;
+    }
+
+    html {
+      height: 100%;
+      overflow-y: auto;
+    }
+    body {
+      margin: 0;
+      padding-top: var(--header-height);
+      min-height: 100%;
+      background: #37383c;
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 90%;
+      line-height: 1.5;
+      overflow: visible;
+    }
+
+    .page-header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background: #2c2d30;
+      display: flex;
+      align-items: center;
+      padding-left: var(--field);
+      z-index: 1000;
+    }
+    #lang-select {
+      margin: 0;
+      position: static;
+      background: #444;
+      color: #fff;
+      border: none;
+      padding: 5px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns:
+        var(--field)
+        calc((100% - 120px) * 0.3)
+        var(--field)
+        calc((100% - 120px) * 0.7)
+        var(--field);
+      grid-template-rows: 40px auto 40px;
+      width: 100%;
+    }
+    .lang { display: none; }
+    .lang.active { display: block; }
+
+    .cell-desc {
+      grid-column: 2;
+      grid-row: 2;
+      background: #2c2d30;
+      border-radius: 8px;
+      padding: 20px;
+      align-self: start;
+      color: #aaa;
+    }
+    .cell-details {
+      grid-column: 4;
+      grid-row: 2;
+      padding-right: 0;
+    }
+
+    h2, h3 {
+      margin: 0 0 0.5em 0;
+      color: #3a82f9;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+    ul, ol {
+      margin: 0;
+      padding: 0;
+      list-style-position: inside;
+    }
+    ul li, ol li {
+      margin-bottom: 0.5em;
+    }
+    pre {
+      background: #444;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 0em;
+      margin-bottom: 1em;
+      overflow-x: auto;
+      color: #fff;
+    }
+    a { color: #0a84ff; }
+    code {
+        background-color: #444;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: "Courier New", Courier, monospace;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <select id="lang-select">
+      <option value="ru">Русский</option>
+      <option value="en" selected>English</option>
+    </select>
+  </header>
+
+  <!-- Russian version -->
+  <div class="lang ru">
+    <div class="page-grid">
+      <div class="cell-desc">
+        <h2 style="color:#fff;">Boards Importer 1.0.1<br><span style="font-size:80%; font-weight:normal;">(Август 2025)</span></h2>
+        <p>Плагин <strong>Boards Importer</strong> для Eagle позволяет быстро импортировать все пины из указанных досок Pinterest в вашу библиотеку Eagle. Он автоматически скачивает медиа (изображения и видео), сохраняет название, оригинальную ссылку, теги и примечания. При повторном импорте плагин определяет и пропускает уже импортированные пины, обновляя теги. Плагин также обнаруживает медиа, повторяющиеся внутри одной доски.</p>
+        <h3 style="color:#fff;">Почему плагин лучше чем расширение для Chrome от Eagle</h3>
+        <ul>
+          <li>Chrome-расширение пропускает story-pins (Idea Pins), тогда как плагин импортирует их вместе с обычными пинами.</li>
+          <li>Расширение работает с одной доской за раз, а плагин позволяет импортировать сразу несколько досок.</li>
+          <li>Chrome-расширение сохраняет только заголовок пина; плагин сохраняет также описание и ссылку на источник.</li>
+          <li>Расширение добавляет тег только одной доски, а плагин помечает все доски, где встречается этот пин.</li>
+          <li>Плагин обнаруживает и показывает медиа, которые повторяются внутри одной доски, тогда как расширение не выявляет такие дубликаты.</li>
+        </ul>
+      </div>
+      <div class="cell-details">
+        <h2>Интерфейс плагина</h2>
+        <p>В правом верхнем углу плагина находится переключатель языка (EN/RU) и иконка ⓘ для вызова этой справки (открывается в системном браузере).</p>
+
+        <h2>Требования</h2>
+        <ul>
+          <li>✅ Windows (полная функциональность)</li>
+          <li>⚠️ macOS (ограниченный режим)</li>
+          <li>Eagle версии 4.0.0 или выше.</li>
+          <li>Интернет для взаимодействия с сервисами Pinterest.</li>
+        </ul>
+
+        <h2>Поддержка платформ</h2>
+        <p><strong>НОВОЕ в v1.0.1:</strong> Добавлена поддержка macOS! Плагин теперь работает на Windows и macOS с автоматическим определением платформы.</p>
+        <p><strong>Пользователи macOS, обратите внимание:</strong> Из-за ограничений безопасности системы плагин работает в ограниченном режиме на macOS:</p>
+        <ul>
+          <li>Импорт ограничен последними 10 досками профиля</li>
+          <li>Максимум 50 пинов на доску</li>
+          <li>Некоторые пины могут быть пропущены, если медиа не удается извлечь через API</li>
+        </ul>
+        <h2>Шаги использования</h2>
+        <h3>1. Авторизация</h3>
+        <p>Нажмите <strong>войдите</strong> и выполните вход в Pinterest в появившемся окне браузера (плагин не хранит логин и пароль — они сохраняются в Eagle).</p>
+        <h3>2. Загрузка досок</h3>
+        <p>
+          Вставьте URL профиля в поле <strong>URL профиля</strong>. Плагин запоминает последний адрес.<br>
+          Нажмите <strong>Загрузить</strong> и дождитесь списка досок. При ≥10 досках (или если начальное сканирование не дало результатов) плагин попытается открыть окно для более глубокого сканирования метаданных.
+        </p>
+        <h3>3. Выбор досок</h3>
+        <ul>
+          <li>Отметьте нужные доски.</li>
+          <li>При >50 пинов включите <strong>Полный</strong> для полного импорта; если опция отключена — будут импортированы только последние ~50 пинов с каждой доски.</li>
+          <li>Покажется «Выбрано: N досок(и), M пинов всего».</li>
+        </ul>
+        <h3>4. Импорт</h3>
+        <p>Нажмите <strong>Импорт</strong>. Плагин может открывать окна для прокрутки досок и отдельных пинов. Прогресс отображается так (пример):</p>
+        <pre>Обработано: 120/200, добавлено: 100, пропущено дубликатов: 15, изменено: 5, найдено копий: 2</pre>
+        <p>Пины, медиа которых уже есть в Eagle, не дублируются: теги добавляются к существующему элементу, и он попадает в «изменено». Медиа, повторяющиеся на одной и той же доске, регистрируются в «найдено копий». После окончания отображается сообщение (пример):</p>
+        <pre>Готово: добавлено 180 из 200, пропущено дубликатов: 15, изменено: 5, найдено копий: 2</pre>
+        <p>и воспроизводится системный звук.</p>
+        <h2>Модальные окна результатов</h2>
+        <ul>
+            <li><strong>Измененные элементы:</strong> При обновлении тегов появится ссылка <strong>изменено: N</strong>. Кликните, чтобы открыть окно с галереей миниатюр. Клик по миниатюре откроет элемент в Eagle.</li>
+            <li><strong>Найденные копии:</strong> Ссылка <strong>найдено копий: N</strong> откроет окно со списком URL пинов, чьи медиафайлы повторяются на одной доске. Ссылки открываются в системном браузере.</li>
+        </ul>
+        <h2>Советы и устранение неполадок</h2>
+        <ul>
+          <li><strong>Нет досок:</strong> проверьте, что профиль публичный и URL корректен. Некоторые профили могут требовать глубокого сканирования для обнаружения досок.</li>
+          <li>Если после первого нажатия <strong>Load</strong> и открытия окна со страницей профиля для глубокого сканирования доски не нашлись, попробуйте нажать <strong>Load</strong> еще раз. Иногда страница профиля в фоновом окне не успевает полностью загрузиться с первого раза, или список досок появляется после дополнительной прокрутки, которую инициирует повторное нажатие.</li>
+        </ul>
+        <h2>Отказ от ответственности</h2>
+        <ul>
+          <li><strong>Неофициальный инструмент:</strong> Boards Importer — это независимый плагин, который не связан с Pinterest, не одобрен и не спонсируется им. Все логотипы и товарные знаки Pinterest™ являются собственностью Pinterest, Inc.</li>
+          <li><strong>Зависимость от Pinterest:</strong> Функциональность плагина зависит от текущей структуры веб-сайта Pinterest. Изменения, вносимые Pinterest в свой сайт, могут привести к сбоям в работе плагина или прекращению его функционирования без предварительного уведомления. Разработчик не может гарантировать долгосрочную совместимость или работоспособность.</li>
+          <li><strong>Ответственное использование:</strong> Пользователи несут ответственность за использование этого плагина в соответствии с Условиями обслуживания Pinterest и действующим законодательством. Разработчик не несет ответственности за неправомерное использование плагина, любые действия, предпринятые Pinterest в отношении учетных записей пользователей в результате использования этого плагина, или любые другие связанные с этим последствия. Используйте на свой страх и риск.</li>
+        </ul>
+        <h2>Контакты</h2>
+        <p>Если у вас есть вопросы, предложения или вы столкнулись с проблемами при работе с плагином, вы можете связаться со мной:</p>
+        <ul>
+          <li>Email: <a href="mailto:evkaurov@gmail.com">evkaurov@gmail.com</a></li>
+          <li>Telegram: <a href="https://t.me/evkaurov" target="_blank">@evkaurov</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- English version -->
+  <div class="lang en active">
+    <div class="page-grid">
+      <div class="cell-desc">
+        <h2 style="color:#fff;">Boards Importer 1.0.1<br><span style="font-size:80%; font-weight:normal;">(August 2025)</span></h2>
+        <p>The <strong>Boards Importer</strong> plugin for Eagle lets you import all pins from selected Pinterest boards into your Eagle library. It downloads media (images and videos), saves the title, original link, tags, and notes. Re-importing only updates tags for existing items. The plugin also detects media that appears multiple times within the same board.</p>
+        <h3 style="color:#fff;">Why the plugin is better than the Eagle Chrome Extension</h3>
+        <ul>
+          <li>The Chrome extension skips story-pins (Idea Pins), while the plugin imports them along with regular pins.</li>
+          <li>The extension imports one board at a time; this plugin handles multiple boards at once.</li>
+          <li>The extension saves only the pin title; this plugin also saves the description and source link.</li>
+          <li>The extension tags pins with a single board name; this plugin tags them with all boards where they appear (if re-importing the same pin under a different board).</li>
+          <li>The plugin detects and reports media that appears multiple times within the same board, while the extension doesn't identify such duplicates.</li>
+        </ul>
+      </div>
+      <div class="cell-details">
+        <h2>Plugin Interface</h2>
+        <p>In the top-right corner of the plugin, you'll find a language switcher (EN/RU) and an ⓘ icon to open this help page (which opens in your system browser).</p>
+
+        <h2>Requirements</h2>
+        <ul>
+          <li>✅ Windows (full functionality)</li>
+          <li>⚠️ macOS (limited mode)</li>
+          <li>Eagle version 4.0.0 or higher.</li>
+          <li>Internet access for interacting with Pinterest services.</li>
+        </ul>
+
+        <h2>Platform Support</h2>
+        <p><strong>NEW in v1.0.1:</strong> macOS support added! The plugin now works on both Windows and macOS with automatic platform detection.</p>
+        <p><strong>macOS users please note:</strong> Due to system security restrictions, the plugin operates in limited mode on macOS:</p>
+        <ul>
+          <li>Import limited to last 10 boards per profile</li>
+          <li>Maximum 50 pins per board</li>
+          <li>Some pins may be skipped if media cannot be extracted via API</li>
+        </ul>
+        <h2>Usage Steps</h2>
+        <h3>1. Authorization</h3>
+        <p>Click <strong>log in</strong> and sign in to Pinterest in the window that appears (login and password are stored in Eagle, not in the plugin).</p>
+        <h3>2. Load Boards</h3>
+        <p>
+          Paste your profile URL into the <strong>Profile URL</strong> field. The plugin remembers it.<br>
+          Click <strong>Load</strong> and wait. For 10+ boards (or if the initial scan yields no results), the plugin will attempt to open a window for deeper metadata fetching.
+        </p>
+        <h3>3. Select Boards</h3>
+        <ul>
+          <li>Check the boards you want.</li>
+          <li>For >50 pins, enable <strong>Full</strong> for a complete import; if disabled, only the last ~50 pins per board will be imported.</li>
+          <li>The counter shows “Selected: N board(s), M pins total”.</li>
+        </ul>
+        <h3>4. Import</h3>
+        <p>Click <strong>Import</strong>. The plugin may open windows for scrolling boards and individual pin metadata. Progress (example):</p>
+        <pre>Processed: 120/200, added: 100, skipped duplicates: 15, modified: 5, copies found: 2</pre>
+        <p>Pins whose media already exists in Eagle are not duplicated: tags are added to the existing item, and it's counted under “modified”. Media appearing multiple times on the same board are logged under "copies found". Upon completion, a message is displayed (example):</p>
+        <pre>Done: added 180 of 200, skipped duplicates: 15, modified: 5, copies found: 2</pre>
+        <p>and a system sound plays.</p>
+        <h2>Result Modals</h2>
+        <ul>
+            <li><strong>Modified Items:</strong> When tags update, a <strong>modified: N</strong> link appears. Click to open a modal gallery with thumbnails. Clicking a thumbnail opens the item in Eagle.</li>
+            <li><strong>Copies Found:</strong> The <strong>copies found: N</strong> link opens a modal listing pin URLs whose media files are repeated on the same board. Links open in your system browser.</li>
+        </ul>
+        <h2>Tips & Troubleshooting</h2>
+        <ul>
+          <li><strong>No boards found:</strong> ensure your profile is public and the URL is correct. Some profiles might require the deeper scan to list boards.</li>
+          <li>If, after the first click on <strong>Load</strong> and the opening of the profile page window for deep scanning, no boards are found, try clicking <strong>Load</strong> again. Sometimes the profile page in the background window may not fully load on the first attempt, or the board list might appear after additional scrolling initiated by a second click.</li>
+        </ul>
+        <h2>Disclaimer</h2>
+        <ul>
+          <li><strong>Unofficial Tool:</strong> Boards Importer is an independent plugin and is not affiliated with, endorsed, or sponsored by Pinterest. All Pinterest™ logos and trademarks are property of Pinterest, Inc.</li>
+          <li><strong>Pinterest Dependency:</strong> The plugin's functionality relies on the current structure of the Pinterest website. Changes made by Pinterest to their site may cause this plugin to malfunction or cease to operate without prior notice. The developer cannot guarantee long-term compatibility or functionality.</li>
+          <li><strong>Responsible Use:</strong> Users are responsible for using this plugin in compliance with Pinterest's Terms of Service and applicable laws. The developer assumes no liability for misuse of the plugin, any actions taken by Pinterest against user accounts as a result of using this plugin, or any other consequences thereof. Use at your own risk.</li>
+        </ul>
+        <h2>Contact</h2>
+        <p>If you have any questions, suggestions, or encounter issues with the plugin, feel free to reach out:</p>
+        <ul>
+          <li>Email: <a href="mailto:evkaurov@gmail.com">evkaurov@gmail.com</a></li>
+          <li>Telegram: <a href="https://t.me/evkaurov" target="_blank">@evkaurov</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const select = document.getElementById('lang-select');
+    const langs = document.querySelectorAll('.lang');
+    select.addEventListener('change', () => {
+      langs.forEach(div => div.classList.remove('active'));
+      document.querySelector('.lang.' + select.value).classList.add('active');
+    });
+  </script>
+</body>
+</html>
