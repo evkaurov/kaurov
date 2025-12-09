@@ -411,13 +411,16 @@
         @media (max-width: 600px) {
             .specializations__title-bar {
                 grid-column: 1 / -1;
+                position: relative;
+                top: auto;
+                z-index: 1;
             }
 
             .specializations__title-bar::before {
                 background: linear-gradient(180deg,
                         rgb(var(--kaurov-dark)) 0%,
-                        rgb(var(--kaurov-dark)) 70%,
-                        rgb(var(--kaurov-dark)) 70%,
+                        rgb(var(--kaurov-dark)) 55%,
+                        rgb(var(--kaurov-dark)) 55%,
                         rgba(var(--kaurov-dark), 0) 100%);
             }
         }
