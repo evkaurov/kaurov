@@ -33,7 +33,7 @@
 
         gtag('config', 'G-VZXYG5YXJK');
     </script>
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.7">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.8">
 </head>
 
 <body>
@@ -41,11 +41,23 @@
         <a class="mobile-topbar__logo" href="index.html" onclick="localStorage.setItem('preferredLang', 'en')">
             <img src="assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
         </a>
-        <div class="lang-toggle-global">
-            <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">EN</button>
-            <a class="lang-toggle" href="design-tools-ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">РУ</a>
+        <div class="mobile-topbar__controls">
+            <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                <span class="mobile-menu-toggle__icon" aria-hidden="true">
+                    <span class="mobile-menu-toggle__line"></span>
+                    <span class="mobile-menu-toggle__line"></span>
+                    <span class="mobile-menu-toggle__line"></span>
+                </span>
+            </button>
+            <div class="lang-toggle-global">
+                <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">EN</button>
+                <a class="lang-toggle" href="design-tools-ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">РУ</a>
+            </div>
         </div>
     </div>
+    <nav class="mobile-menu" id="mobile-menu" hidden>
+        <div class="mobile-menu__list"></div>
+    </nav>
     <div class="lang-wrapper">
         <div class="lang-toggle-global">
             <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">EN</button>
@@ -135,6 +147,7 @@
             </div>
         </div>
     </div>
+    <script src="assets/scripts/mobile-menu.js?v=1.0"></script>
 </body>
 
 </html>
