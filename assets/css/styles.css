@@ -905,6 +905,12 @@
             color: #fff;
         }
 
+        .content-text .feature-subhead {
+            margin-top: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+
         .feature-list {
             display: grid;
             gap: 10px;
