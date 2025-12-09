@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Font Collector 1.0 copies the fonts used in your project (After Effects, Photoshop, Illustrator) into a folder next to the file and saves a report.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://kaurov.net/tools/boards-importer.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Font Collector 1.0 | Font collection script">
+    <meta property="og:description"
+        content="Scans the project, copies found fonts into a separate folder and saves a report. Works in After Effects, Photoshop and Illustrator.">
+    <meta property="og:url" content="https://kaurov.net/tools/boards-importer.html">
+    <meta property="og:image" content="https://kaurov.net/assets/img/boards-importer-preview.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Font Collector 1.0 | After Effects Script">
+    <meta name="twitter:description"
+        content="Scans the project, copies found fonts into a separate folder and saves a report. Works in After Effects, Photoshop and Illustrator.">
+    <meta name="twitter:image" content="https://kaurov.net/assets/img/boards-importer-preview.jpg">
+
+    <title>Font Collector 1.0 | Font collection script</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZXYG5YXJK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-VZXYG5YXJK');
+    </script>
+    <link rel="stylesheet" href="/assets/css/styles.css?v=1.7">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.nav-item[data-target]').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+
+            const body = document.body;
+            const modal = document.querySelector('#download-modal');
+            const downloadButton = document.querySelector('.button--primary[data-modal-target="#download-modal"]');
+            const closeModalElements = modal ? modal.querySelectorAll('[data-close-modal]') : [];
+
+            function openModal() {
+                if (!modal) return;
+                modal.classList.add('modal--open');
+                body.classList.add('modal-open');
+                modal.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeModal() {
+                if (!modal) return;
+                modal.classList.remove('modal--open');
+                body.classList.remove('modal-open');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+
+            if (downloadButton) {
+                downloadButton.addEventListener('click', function () {
+                    openModal();
+                });
+            }
+
+            closeModalElements.forEach(function (el) {
+                el.addEventListener('click', closeModal);
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="mobile-topbar">
+        <a class="mobile-topbar__logo" href="/index.html" onclick="localStorage.setItem('preferredLang', 'en')">
+            <img src="/assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+        </a>
+        <div class="lang-toggle-global">
+            <a class="lang-toggle active" href="/tools/boards-importer.html">eng</a>
+            <a class="lang-toggle" href="/tools/boards-importer-ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
+        </div>
+    </div>
+    <div class="lang-wrapper">
+        <div class="lang-toggle-global">
+            <a class="lang-toggle active" href="/tools/boards-importer.html">eng</a>
+            <a class="lang-toggle" href="/tools/boards-importer-ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <a href="/index.html" onclick="localStorage.setItem('preferredLang', 'en')">
+                    <img src="/assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+                </a>
+            </div>
+            <a class="nav-item" href="/index.html">Portfolio<br>page</a>
+            <a class="nav-item" href="javascript:void(0)">Other scripts<br>(soon)</a>
+        </div>
+
+        <div class="header" id="overview">
+            <div class="avatar script-avatar">
+                <img src="/assets/img/boards-importer-ava.png" alt="Font Collector cover">
+            </div>
+            <div class="header-info">
+                <h1>Font Collector 1.0</h1>
+                <div class="subtitle">Utility for automatically collecting fonts in After Effects, Photoshop and
+                    Illustrator.</div>
+                <div class="about-text">
+                    <p>No more “Missing Fonts” when opening older projects. The script scans text layers, finds the
+                        required font files on the system (Windows/macOS) and copies them into a folder next to the
+                        project. Ideal for archiving.</p>
+                </div>
+                <div class="cta-row">
+                    <a class="button button--primary" href="https://github.com/evkaurov/font-collector/releases/latest/download/KAUROV.Font.Collector.zip" download data-modal-target="#download-modal">Download
+                        script</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="features">
+            <h2 class="section-title">
+                <div class="section-title-wrapper"><span>Features</span></div>
+            </h2>
+            <div class="section-content">
+                <div class="content-text">
+                    <h2>Saves fonts from your project</h2>
+                    <p>Run the script and it will collect every font used in the project text so you can reopen the
+                        archive later with no missing font warnings.</p>
+                    <ul class="feature-list">
+                        <li><strong>Multi-app.</strong> One .jsxbin works in all three apps and auto-detects the host.
+                        </li>
+                        <li><strong>Deep search.</strong> Scans not only system folders but also hidden Adobe and
+                            CoreSync directories.</li>
+                        <li><strong>Smart family fetch.</strong> Tries to grab the whole family so you don’t lose Bold,
+                            Italic, etc.</li>
+                        <li><strong>Full report.</strong> Creates fonts_report.txt with found files and missing-font
+                            warnings.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="support">
+            <h2 class="section-title">
+                <div class="section-title-wrapper"><span>Support</span></div>
+            </h2>
+            <div class="section-content">
+                <p class="support-intro">If you want, you can support the development of my tools. Choose the option
+                    that works for you.</p>
+                <div class="support-cards">
+                    <div class="download-card donate-card">
+                        <div class="donate-badge-row">
+                            <span class="donate-icon donate-icon--intl" aria-hidden="true">
+                                <img src="/assets/img/icon-globe.svg" alt="">
+                            </span>
+                            <span class="donate-badge donate-badge--intl">
+                                <span class="donate-badge__text">For global supporters</span>
+                            </span>
+                        </div>
+                        <h3 class="donate-title">Donate via Ko-fi</h3>
+                        <p class="download-card__meta">Supports bank cards, PayPal and other international payment
+                            methods.</p>
+                        <div class="download-actions support-actions">
+                            <a class="donate-button donate-button--kofi" href="https://ko-fi.com/kaurov" target="_blank"
+                                rel="noopener">
+                                <span>Support via Ko-fi</span>
+                                <img src="/assets/img/logo-kofi.svg" alt="Ko-fi">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="download-card donate-card">
+                        <div class="donate-badge-row">
+                            <span class="donate-icon donate-icon--ru" aria-hidden="true">
+                                <img src="/assets/img/icon-russia.svg" alt="">
+                            </span>
+                            <span class="donate-badge donate-badge--ru">
+                                <span class="donate-badge__text">I’m from Russia</span>
+                            </span>
+                        </div>
+                        <h3 class="donate-title">Donate via Donatty</h3>
+                        <p class="download-card__meta">Supports Russian bank cards, SBP and other local payment
+                            options.</p>
+                        <div class="download-actions support-actions">
+                            <a class="donate-button donate-button--donatty" href="https://donatty.com/kaurov"
+                                target="_blank" rel="noopener">
+                                <span>Support from Russia</span>
+                                <img src="/assets/img/logo-donatty.svg" alt="Donatty">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="contacts">
+            <h2 class="section-title">
+                <div class="section-title-wrapper"><span>Contacts</span></div>
+            </h2>
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <p>For any inquiries,<br>please contact me via email or Telegram.</p>
+                    <div class="contact-item">
+                        <a href="mailto:evkaurov@gmail.com" class="contact-link">
+                            <span class="contact-icon">
+                                <img src="/assets/img/contacts-icon-1.svg" alt="Email icon">
+                            </span>
+                            <span class="contact-text">evkaurov@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://t.me/evkaurov" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            <span class="contact-icon">
+                                <img src="/assets/img/contacts-icon-2.svg" alt="Telegram icon">
+                            </span>
+                            <span class="contact-text">@evkaurov</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="social-section">
+                    <div class="social-title">Find me on social media</div>
+                    <div class="social-links">
+                        <a class="social-link" href="https://www.instagram.com/kaurov" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="/assets/img/instagram.svg" alt="Instagram">
+                        </a>
+                        <a class="social-link" href="https://t.me/ekaurov" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/img/telegram.svg" alt="Telegram">
+                        </a>
+                        <a class="social-link" href="http://www.behance.net/Kaurov" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="/assets/img/behance.svg" alt="Behance">
+                        </a>
+                        <a class="social-link" href="https://vimeo.com/evkaurov" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="/assets/img/vimeo.svg" alt="Vimeo">
+                        </a>
+                        <a class="social-link" href="https://www.facebook.com/evgeniy.kaurov" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="/assets/img/facebook.svg" alt="Facebook">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="download-modal" aria-hidden="true">
+        <div class="modal__overlay" data-close-modal></div>
+        <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="download-modal-title">
+            <button class="modal__close" type="button" aria-label="Close" data-close-modal>×</button>
+            <div class="modal__content">
+                <h3 class="modal__title" id="download-modal-title">Download started. Thank you!</h3>
+                <div class="section-content modal-support-grid">
+                    <p class="support-intro">If you want, you can support the development of my tools. Choose the option
+                        that works for you.</p>
+                    <div class="support-cards">
+                        <div class="download-card donate-card">
+                            <div class="donate-badge-row">
+                                <span class="donate-icon donate-icon--intl" aria-hidden="true">
+                                    <img src="/assets/img/icon-globe.svg" alt="">
+                                </span>
+                                <span class="donate-badge donate-badge--intl">
+                                    <span class="donate-badge__text">For global supporters</span>
+                                </span>
+                            </div>
+                            <h3 class="donate-title">Donate via Ko-fi</h3>
+                            <p class="download-card__meta">Supports bank cards, PayPal and other international payment
+                                methods.</p>
+                            <div class="download-actions support-actions">
+                                <a class="donate-button donate-button--kofi" href="https://ko-fi.com/kaurov"
+                                    target="_blank" rel="noopener">
+                                    <span>Support via Ko-fi</span>
+                                    <img src="/assets/img/logo-kofi.svg" alt="Ko-fi">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="download-card donate-card">
+                            <div class="donate-badge-row">
+                                <span class="donate-icon donate-icon--ru" aria-hidden="true">
+                                <img src="/assets/img/icon-russia.svg" alt="">
+                            </span>
+                            <span class="donate-badge donate-badge--ru">
+                                <span class="donate-badge__text">I’m from Russia</span>
+                            </span>
+                        </div>
+                            <h3 class="donate-title">Donate via Donatty</h3>
+                            <p class="download-card__meta">Supports Russian bank cards, SBP and other local payment
+                                options.</p>
+                            <div class="download-actions support-actions">
+                                <a class="donate-button donate-button--donatty" href="https://donatty.com/kaurov"
+                                    target="_blank" rel="noopener">
+                                    <span>Support from Russia</span>
+                                    <img src="/assets/img/logo-donatty.svg" alt="Donatty">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
