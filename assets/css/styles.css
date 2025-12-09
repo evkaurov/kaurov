@@ -234,6 +234,10 @@
             margin-bottom: 0;
         }
 
+        #support.section {
+            margin-bottom: 0;
+        }
+
         @media (max-width: 600px) {
             .section {
                 grid-column: 1 / -1;
