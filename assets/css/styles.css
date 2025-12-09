@@ -905,6 +905,18 @@
             color: #fff;
         }
 
+        .button--secondary {
+            background-color: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .button--secondary:hover {
+            background-color: #0000fd;
+            border-color: #0000fd;
+            color: #fff;
+        }
+
         .content-text .feature-subhead {
             margin-top: 18px;
             font-weight: 700;
