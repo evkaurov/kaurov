@@ -148,6 +148,46 @@
             gap: 8px;
         }
 
+        .mobile-topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: rgb(var(--kaurov-dark));
+            z-index: 250;
+            gap: 12px;
+            border-bottom: 1px solid #2f2f2f;
+        }
+
+        .mobile-topbar__logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-topbar__logo img {
+            display: block;
+            height: 34px;
+            width: auto;
+        }
+
+        @media (max-width: 600px) {
+            .mobile-topbar {
+                display: flex;
+            }
+
+            .mobile-topbar .lang-toggle-global {
+                margin-left: auto;
+            }
+
+            .lang-wrapper {
+                display: none;
+            }
+        }
+
         /* Header */
         .header {
             grid-column: 3 / -1;

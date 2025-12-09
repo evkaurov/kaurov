@@ -42,7 +42,7 @@
 
         gtag('config', 'G-VZXYG5YXJK');
     </script>
-    <link rel="stylesheet" href="assets/css/styles.css?v=1.3">
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.5">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.nav-item').forEach(function(link) {
@@ -73,6 +73,15 @@
     </script>
 </head>
 <body>
+    <div class="mobile-topbar">
+        <a class="mobile-topbar__logo" href="index.html" onclick="localStorage.setItem('preferredLang', 'en')">
+            <img src="assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+        </a>
+        <div class="lang-toggle-global">
+            <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">eng</button>
+            <a class="lang-toggle" href="ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">rus</a>
+        </div>
+    </div>
     <div class="lang-wrapper">
         <div class="lang-toggle-global">
             <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">eng</button>
