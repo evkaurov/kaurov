@@ -2,17 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kaurov.net/</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://kaurov.net/ru.html</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://kaurov.net/font-collector.html</loc>
-    <lastmod>2025-12-03</lastmod>
-    <priority>1.0</priority>
+    <loc>https://kaurov.net/design-tools.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kaurov.net/design-tools-ru.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kaurov.net/tools/boards-importer.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kaurov.net/tools/boards-importer-ru.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kaurov.net/tools/font-collector.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kaurov.net/tools/font-collector-ru.html</loc>
+    <lastmod>2025-12-09</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
