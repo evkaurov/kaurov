@@ -340,7 +340,7 @@
         }
 
         .header-info h1 {
-            font-size: clamp(24px, 2.4vw, 36px);
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 8px;
         }
