@@ -381,7 +381,7 @@
         }
 
         .header-info .subtitle {
-            font-size: clamp(14px, 1.4vw, 18px);
+            font-size: 18px;
             font-weight: 400;
             margin-bottom: 30px;
         }
