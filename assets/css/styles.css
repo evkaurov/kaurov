@@ -352,14 +352,15 @@
             flex-wrap: wrap;
         }
 
+        .header-title__text {
+            display: inline-block;
+            padding-right: 0;
+        }
+
         .header-title .app-badges {
             display: inline-flex;
             gap: 8px;
-        }
-
-        .header-title .app-spacer {
-            display: inline-block;
-            width: 8px;
+            flex-shrink: 0;
         }
 
         .header-title .app-badge {
