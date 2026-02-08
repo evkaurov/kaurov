@@ -1,0 +1,56 @@
+name: Update Presentation Manifest
+
+on:
+  push:
+    paths:
+      - "presentation/img/**"
+      - ".github/workflows/update-presentation-manifest.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build presentation/img/manifest.json
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          img_dir = Path("presentation/img")
+          if not img_dir.exists():
+            raise SystemExit("Missing directory: presentation/img")
+
+          allowed_ext = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".avif", ".svg"}
+          files = sorted(
+            p.relative_to(img_dir).as_posix()
+            for p in img_dir.rglob("*")
+            if p.is_file()
+            and p.suffix.lower() in allowed_ext
+            and "slide-" in p.name.lower()
+          )
+
+          manifest_path = img_dir / "manifest.json"
+          manifest_path.write_text(json.dumps(files, ensure_ascii=True, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- presentation/img/manifest.json; then
+            echo "manifest.json is up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add presentation/img/manifest.json
+          git commit -m "chore: update presentation manifest"
+          git push

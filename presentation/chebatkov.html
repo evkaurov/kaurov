@@ -242,34 +242,6 @@
   </a>
 
   <script>
-    const FALLBACK_IMAGE_FILES = [
-      "img/chebatkov-presenation-3840x2160-slide-00-01-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-00-02-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-00-03-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-00-23-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-00-24-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-00-25-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-00-27-IN-left-OUT-right.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-02-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-03-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-04-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-05-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-06-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-07-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-08-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-09-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-01-10-IN-right-OUT-left.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-01-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-05-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-06-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-07-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-08-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-09-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-20-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-21-IN-up-OUT-down.png",
-      "img/chebatkov-presenation-3840x2160-slide-02-22-IN-up-OUT-down.png"
-    ];
-
     const IMAGE_EXT_RE = /\.(png|jpe?g|webp|gif|avif|svg)$/i;
     const META_RE = /slide-(\d+)-(\d+)-IN-([a-z]+)-OUT-([a-z]+)/i;
     const SIZE_RE = /-(\d+)x(\d+)-slide-/i;
@@ -413,7 +385,7 @@
     function buildSlides(paths) {
       const parsed = paths.map(parseMeta).filter(Boolean);
       if (!parsed.length) {
-        throw new Error("Не удалось найти файлы формата ...-slide-00-01-IN-left-OUT-right.png в папке img.");
+        throw new Error("Не удалось найти изображения формата *-slide-XX-YY-IN-*-OUT-* в папке img.");
       }
 
       const withSize = parsed.find((item) => item.width && item.height);
@@ -487,7 +459,9 @@
         return fromListing;
       }
 
-      return FALLBACK_IMAGE_FILES.map(normalizeDiscoveredPath);
+      throw new Error(
+        "Не удалось получить список изображений. Добавьте ./img/manifest.json (массив имён файлов) или включите листинг папки ./img/."
+      );
     }
 
     async function preloadImages(paths) {
