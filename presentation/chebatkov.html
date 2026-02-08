@@ -128,6 +128,52 @@
       pointer-events: auto;
     }
 
+    #fullscreen-toggle {
+      position: absolute;
+      top: 10px;
+      top: max(10px, env(safe-area-inset-top));
+      right: 10px;
+      right: max(10px, env(safe-area-inset-right));
+      z-index: 9600;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 10px;
+      background: rgba(17, 20, 24, 0.64);
+      color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      display: none;
+      place-items: center;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    @media (pointer: coarse) {
+      #fullscreen-toggle {
+        display: grid;
+      }
+    }
+
+    #fullscreen-toggle.hidden {
+      display: none !important;
+    }
+
+    #fullscreen-toggle svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #fullscreen-toggle:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.94);
+      outline-offset: 2px;
+    }
+
     .pager-dot {
       width: 12px;
       height: 12px;
@@ -229,6 +275,11 @@
       <div id="error" class="hidden"></div>
       <div id="stage"></div>
       <div id="pager" aria-label="slide pages"></div>
+      <button id="fullscreen-toggle" type="button" aria-label="Полный экран" title="Полный экран">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 3H4v5M15 3h5v5M4 15v5h5M20 15v5h-5" />
+        </svg>
+      </button>
       <div id="swipe-hint" aria-hidden="true"><div id="swipe-hint-dot"></div></div>
     </section>
   </main>
@@ -340,6 +391,7 @@
     const stageWrap = document.getElementById("stage-wrap");
     const stage = document.getElementById("stage");
     const pagerNode = document.getElementById("pager");
+    const fullscreenToggleNode = document.getElementById("fullscreen-toggle");
     const swipeHintNode = document.getElementById("swipe-hint");
     const loadingNode = document.getElementById("loading");
     const errorNode = document.getElementById("error");
@@ -355,6 +407,78 @@
 
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function getFullscreenApi() {
+      const root = document.documentElement;
+      if (typeof root.requestFullscreen === "function") {
+        return {
+          request: "requestFullscreen",
+          exit: "exitFullscreen",
+          element: "fullscreenElement",
+          changeEvent: "fullscreenchange"
+        };
+      }
+      if (typeof root.webkitRequestFullscreen === "function") {
+        return {
+          request: "webkitRequestFullscreen",
+          exit: "webkitExitFullscreen",
+          element: "webkitFullscreenElement",
+          changeEvent: "webkitfullscreenchange"
+        };
+      }
+      return null;
+    }
+
+    const FULLSCREEN_API = getFullscreenApi();
+
+    function isFullscreenActive() {
+      if (!FULLSCREEN_API) return false;
+      return Boolean(document[FULLSCREEN_API.element]);
+    }
+
+    function updateFullscreenButtonState() {
+      if (!fullscreenToggleNode) return;
+      const active = isFullscreenActive();
+      const label = active ? "Выйти из полноэкранного режима" : "Полный экран";
+      fullscreenToggleNode.setAttribute("aria-label", label);
+      fullscreenToggleNode.setAttribute("title", label);
+    }
+
+    async function toggleFullscreenMode() {
+      if (!FULLSCREEN_API) return;
+      if (isFullscreenActive()) {
+        await document[FULLSCREEN_API.exit]();
+        return;
+      }
+      await document.documentElement[FULLSCREEN_API.request]();
+    }
+
+    function initFullscreenToggle() {
+      if (!fullscreenToggleNode) return;
+      if (
+        !FULLSCREEN_API ||
+        !FULLSCREEN_API.exit ||
+        typeof document[FULLSCREEN_API.exit] !== "function"
+      ) {
+        fullscreenToggleNode.classList.add("hidden");
+        return;
+      }
+
+      fullscreenToggleNode.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        void toggleFullscreenMode()
+          .catch(() => {})
+          .finally(() => {
+            updateFullscreenButtonState();
+          });
+      });
+
+      document.addEventListener(FULLSCREEN_API.changeEvent, () => {
+        updateFullscreenButtonState();
+      });
+      updateFullscreenButtonState();
     }
 
     function setAspectRatio(width, height) {
@@ -772,7 +896,7 @@
       if (Date.now() < suppressClickUntilTs) {
         return;
       }
-      if (event.target instanceof Element && event.target.closest("#pager")) {
+      if (event.target instanceof Element && event.target.closest("#pager, #fullscreen-toggle")) {
         return;
       }
       const rect = stageWrap.getBoundingClientRect();
@@ -794,7 +918,7 @@
     });
 
     function onTouchStart(event) {
-      if (event.target instanceof Element && event.target.closest("#pager")) {
+      if (event.target instanceof Element && event.target.closest("#pager, #fullscreen-toggle")) {
         touchSwipeStart = null;
         return;
       }
@@ -860,7 +984,7 @@
     })();
 
     function updateDirectionalCursor(clientX, target) {
-      if (target instanceof Element && target.closest("#pager")) {
+      if (target instanceof Element && target.closest("#pager, #fullscreen-toggle")) {
         stageWrap.style.cursor = "default";
         return;
       }
@@ -899,6 +1023,7 @@
       pagerNode.classList.remove("visible");
     });
 
+    initFullscreenToggle();
     void start();
   </script>
 </body>
