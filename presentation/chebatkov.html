@@ -203,33 +203,6 @@
       }
     }
 
-    #corner-logo-link {
-      position: fixed;
-      right: 14px;
-      right: max(14px, env(safe-area-inset-right));
-      bottom: 14px;
-      bottom: max(14px, env(safe-area-inset-bottom));
-      z-index: 12000;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(6px);
-      transition: opacity 160ms ease, transform 160ms ease;
-    }
-
-    #corner-logo-link.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    #corner-logo {
-      display: block;
-      width: auto;
-      height: 40px;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
     #loading,
     #error {
       position: absolute;
@@ -259,16 +232,78 @@
       <div id="swipe-hint" aria-hidden="true"><div id="swipe-hint-dot"></div></div>
     </section>
   </main>
-  <a
-    id="corner-logo-link"
-    href="https://kaurov.net/ru.html"
-    aria-label="Открыть сайт KAUROV"
-  >
-    <img id="corner-logo" src="./img/kaurov-logo-black.svg" alt="KAUROV" />
-  </a>
 
   <script>
-    const IMAGE_EXT_RE = /\.(png|jpe?g|webp|gif|avif|svg)$/i;
+    const IMAGE_FILES = [
+      "img/chebatkov-presenation-3840x2160-slide-00-01-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-00-02-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-00-03-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-00-23-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-00-24-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-00-25-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-02-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-03-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-04-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-05-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-06-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-07-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-08-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-01-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-01-IN-up-OUT-down.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-05-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-06-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-07-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-08-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-20-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-02-21-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-01-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-02-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-03-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-04-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-08-IN-left-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-20-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-03-21-IN-left-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-01-IN-left-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-05-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-06-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-07-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-08-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-04-20-IN-right-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-05-01-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-05-02-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-05-06-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-05-07-IN-right-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-05-18-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-01-IN-up-OUT-down.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-02-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-03-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-04-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-08-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-06-20-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-01-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-02-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-03-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-04-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-08-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-07-20-IN-left-OUT-left.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-01-IN-up-OUT-down.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-02-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-03-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-04-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-08-IN-up-OUT-up.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-09-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-08-20-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-09-01-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-09-02-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-09-06-IN-right-OUT-right.png",
+      "img/chebatkov-presenation-3840x2160-slide-09-07-IN-static-OUT-static.png",
+      "img/chebatkov-presenation-3840x2160-slide-09-17-IN-left-OUT-right.png"
+    ];
     const META_RE = /slide-(\d+)-(\d+)-IN-([a-z]+)-OUT-([a-z]+)/i;
     const SIZE_RE = /-(\d+)x(\d+)-slide-/i;
 
@@ -291,10 +326,6 @@
       INITIAL_DELAY_MS: 1200,
       DURATION_MS: 2200
     });
-    const LOGO_TRIGGER_ZONE = Object.freeze({
-      WIDTH_PX: 115,
-      HEIGHT_PX: 85
-    });
     const HAS_TOUCH_INPUT = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
 
     const stageWrap = document.getElementById("stage-wrap");
@@ -303,14 +334,12 @@
     const swipeHintNode = document.getElementById("swipe-hint");
     const loadingNode = document.getElementById("loading");
     const errorNode = document.getElementById("error");
-    const cornerLogoLink = document.getElementById("corner-logo-link");
 
     let slides = [];
     let currentSlideIndex = 0;
     let requestedSlideIndex = 0;
     let activeLayers = [];
     let isTransitioning = false;
-    let isCornerLogoHovered = false;
     let swipeHintTimeoutId = null;
     let touchSwipeStart = null;
     let suppressClickUntilTs = 0;
@@ -435,59 +464,8 @@
         }));
     }
 
-    async function tryLoadJsonList(path) {
-      try {
-        const res = await fetch(path, { cache: "no-store" });
-        if (!res.ok) return [];
-        const data = await res.json();
-        if (!Array.isArray(data)) return [];
-        return data.map(String).filter((name) => IMAGE_EXT_RE.test(name));
-      } catch {
-        return [];
-      }
-    }
-
-    async function discoverFromDirectoryListing() {
-      try {
-        const res = await fetch("./img/", { cache: "no-store" });
-        if (!res.ok) return [];
-        const html = await res.text();
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        const links = [...doc.querySelectorAll("a")]
-          .map((a) => a.getAttribute("href") || "")
-          .map((href) => href.split("?")[0].split("#")[0])
-          .filter((href) => href && !href.endsWith("/") && href !== "../")
-          .map((href) => decodeURIComponent(href));
-
-        const images = links.filter((href) => IMAGE_EXT_RE.test(href));
-        return [...new Set(images)].map((name) => normalizeDiscoveredPath(name));
-      } catch {
-        return [];
-      }
-    }
-
     async function discoverImageFiles() {
-      const jsonCandidates = [
-        "./img/manifest.json",
-        "./img/images.json",
-        "./img/list.json"
-      ];
-
-      for (const candidate of jsonCandidates) {
-        const list = await tryLoadJsonList(candidate);
-        if (list.length) {
-          return list.map(normalizeDiscoveredPath);
-        }
-      }
-
-      const fromListing = await discoverFromDirectoryListing();
-      if (fromListing.length) {
-        return fromListing;
-      }
-
-      throw new Error(
-        "Не удалось получить список изображений. Добавьте ./img/manifest.json (массив имён файлов) или включите листинг папки ./img/."
-      );
+      return IMAGE_FILES.map(normalizeDiscoveredPath);
     }
 
     async function preloadImages(paths) {
@@ -693,7 +671,6 @@
         requestedSlideIndex = 0;
         renderPager();
         loadingNode.classList.add("hidden");
-        syncLogoOffsetWithStage();
         void showSlide(slides[currentSlideIndex]);
         setTimeout(() => {
           if (currentSlideIndex === 0 && requestedSlideIndex === 0 && !isTransitioning) {
@@ -800,14 +777,17 @@
       stageWrap.addEventListener("touchcancel", onTouchCancel, { passive: true });
     }
 
+    const CURSOR_ARROW_SIZE = 56;
+    const CURSOR_ARROW_HOTSPOT = CURSOR_ARROW_SIZE / 2;
+
     const LEFT_CURSOR = (() => {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path d="M19 6L9 14L19 22" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6L9 14L19 22" fill="none" stroke="black" stroke-opacity="0.45" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-      return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 14 14, w-resize`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${CURSOR_ARROW_SIZE}" height="${CURSOR_ARROW_SIZE}" viewBox="0 0 28 28"><path d="M19 6L9 14L19 22" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6L9 14L19 22" fill="none" stroke="black" stroke-opacity="0.45" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      return `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${CURSOR_ARROW_HOTSPOT} ${CURSOR_ARROW_HOTSPOT}, w-resize`;
     })();
 
     const RIGHT_CURSOR = (() => {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path d="M9 6L19 14L9 22" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 6L19 14L9 22" fill="none" stroke="black" stroke-opacity="0.45" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-      return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 14 14, e-resize`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${CURSOR_ARROW_SIZE}" height="${CURSOR_ARROW_SIZE}" viewBox="0 0 28 28"><path d="M9 6L19 14L9 22" fill="none" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 6L19 14L9 22" fill="none" stroke="black" stroke-opacity="0.45" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      return `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${CURSOR_ARROW_HOTSPOT} ${CURSOR_ARROW_HOTSPOT}, e-resize`;
     })();
 
     function updateDirectionalCursor(clientX, target) {
@@ -827,22 +807,6 @@
       pagerNode.classList.toggle("visible", inBottomThird);
     }
 
-    function syncLogoOffsetWithStage() {
-      const rect = stageWrap.getBoundingClientRect();
-      const rightOffset = Math.max(0, window.innerWidth - rect.right);
-      const bottomOffset = Math.max(0, window.innerHeight - rect.bottom);
-      const minOffset = Math.min(rightOffset, bottomOffset);
-      cornerLogoLink.style.right = `${minOffset}px`;
-      cornerLogoLink.style.bottom = `${minOffset}px`;
-    }
-
-    function updateCornerLogoVisibility(clientX, clientY) {
-      const inCorner =
-        clientX >= window.innerWidth - LOGO_TRIGGER_ZONE.WIDTH_PX &&
-        clientY >= window.innerHeight - LOGO_TRIGGER_ZONE.HEIGHT_PX;
-      cornerLogoLink.classList.toggle("visible", inCorner || isCornerLogoHovered);
-    }
-
     stageWrap.addEventListener("mouseenter", (event) => {
       updateDirectionalCursor(event.clientX, event.target);
       updatePagerVisibility(event.clientY);
@@ -857,30 +821,6 @@
       stageWrap.style.cursor = "default";
       pagerNode.classList.remove("visible");
     });
-
-    window.addEventListener("mousemove", (event) => {
-      updateCornerLogoVisibility(event.clientX, event.clientY);
-    });
-
-    document.addEventListener("mouseleave", () => {
-      cornerLogoLink.classList.remove("visible");
-    });
-
-    cornerLogoLink.addEventListener("mouseenter", () => {
-      isCornerLogoHovered = true;
-      cornerLogoLink.classList.add("visible");
-    });
-
-    cornerLogoLink.addEventListener("mouseleave", (event) => {
-      isCornerLogoHovered = false;
-      updateCornerLogoVisibility(event.clientX, event.clientY);
-    });
-
-    window.addEventListener("resize", () => {
-      syncLogoOffsetWithStage();
-    });
-
-    syncLogoOffsetWithStage();
 
     void start();
   </script>
