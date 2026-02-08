@@ -142,15 +142,15 @@
       background: rgba(17, 20, 24, 0.64);
       color: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(8px);
-      display: none;
+      display: grid;
       place-items: center;
       padding: 0;
       cursor: pointer;
     }
 
-    @media (pointer: coarse) {
+    @media (hover: hover) and (pointer: fine) {
       #fullscreen-toggle {
-        display: grid;
+        display: none;
       }
     }
 
@@ -404,6 +404,7 @@
     let swipeHintTimeoutId = null;
     let touchSwipeStart = null;
     let suppressClickUntilTs = 0;
+    let hasShownFullscreenFallbackHint = false;
 
     function sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
@@ -439,16 +440,26 @@
 
     function updateFullscreenButtonState() {
       if (!fullscreenToggleNode) return;
-      const active = isFullscreenActive();
-      const label = active ? "Выйти из полноэкранного режима" : "Полный экран";
+      const label = FULLSCREEN_API
+        ? (isFullscreenActive() ? "Выйти из полноэкранного режима" : "Полный экран")
+        : "Скрыть панели браузера";
       fullscreenToggleNode.setAttribute("aria-label", label);
       fullscreenToggleNode.setAttribute("title", label);
     }
 
     async function toggleFullscreenMode() {
-      if (!FULLSCREEN_API) return;
+      if (!FULLSCREEN_API) {
+        window.scrollTo({ top: 1, left: 0, behavior: "smooth" });
+        if (!hasShownFullscreenFallbackHint) {
+          hasShownFullscreenFallbackHint = true;
+          alert("На iPhone браузер обычно не поддерживает настоящий fullscreen для сайта. Лучший вариант: Поделиться -> На экран Домой.");
+        }
+        return;
+      }
       if (isFullscreenActive()) {
-        await document[FULLSCREEN_API.exit]();
+        if (FULLSCREEN_API.exit && typeof document[FULLSCREEN_API.exit] === "function") {
+          await document[FULLSCREEN_API.exit]();
+        }
         return;
       }
       await document.documentElement[FULLSCREEN_API.request]();
@@ -456,14 +467,6 @@
 
     function initFullscreenToggle() {
       if (!fullscreenToggleNode) return;
-      if (
-        !FULLSCREEN_API ||
-        !FULLSCREEN_API.exit ||
-        typeof document[FULLSCREEN_API.exit] !== "function"
-      ) {
-        fullscreenToggleNode.classList.add("hidden");
-        return;
-      }
 
       fullscreenToggleNode.addEventListener("click", (event) => {
         event.preventDefault();
@@ -475,9 +478,11 @@
           });
       });
 
-      document.addEventListener(FULLSCREEN_API.changeEvent, () => {
-        updateFullscreenButtonState();
-      });
+      if (FULLSCREEN_API) {
+        document.addEventListener(FULLSCREEN_API.changeEvent, () => {
+          updateFullscreenButtonState();
+        });
+      }
       updateFullscreenButtonState();
     }
 
