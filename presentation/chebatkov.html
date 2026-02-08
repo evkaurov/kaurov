@@ -866,7 +866,15 @@
       }
       const rect = stageWrap.getBoundingClientRect();
       const relativeX = clientX - rect.left;
-      stageWrap.style.cursor = relativeX < rect.width / 2 ? LEFT_CURSOR : RIGHT_CURSOR;
+      const isLeftHalf = relativeX < rect.width / 2;
+      const canGoPrev = requestedSlideIndex > 0;
+      const canGoNext = requestedSlideIndex < slides.length - 1;
+
+      if (isLeftHalf) {
+        stageWrap.style.cursor = canGoPrev ? LEFT_CURSOR : "default";
+        return;
+      }
+      stageWrap.style.cursor = canGoNext ? RIGHT_CURSOR : "default";
     }
 
     function updatePagerVisibility(clientY) {
