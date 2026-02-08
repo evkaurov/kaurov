@@ -329,6 +329,12 @@
       INITIAL_DELAY_MS: 1200,
       DURATION_MS: 2200
     });
+    const PRELOAD_SETTINGS = Object.freeze({
+      MAX_RETRIES: 4,
+      RETRY_DELAY_MS: 280,
+      CONCURRENCY: 6,
+      TIMEOUT_MS: 12000
+    });
     const HAS_TOUCH_INPUT = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
 
     const stageWrap = document.getElementById("stage-wrap");
@@ -471,25 +477,85 @@
       return IMAGE_FILES.map(normalizeDiscoveredPath);
     }
 
+    function buildRetrySrc(src, attempt) {
+      if (attempt <= 1) return src;
+      const separator = src.includes("?") ? "&" : "?";
+      return `${src}${separator}retry=${attempt}-${Date.now()}`;
+    }
+
+    function loadImageOnce(src) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        let timeoutId = null;
+
+        const cleanup = () => {
+          if (timeoutId !== null) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+          }
+          img.onload = null;
+          img.onerror = null;
+        };
+
+        img.onload = () => {
+          cleanup();
+          resolve();
+        };
+        img.onerror = () => {
+          cleanup();
+          reject(new Error(`Ошибка загрузки: ${src}`));
+        };
+
+        timeoutId = setTimeout(() => {
+          cleanup();
+          reject(new Error(`Таймаут загрузки: ${src}`));
+        }, PRELOAD_SETTINGS.TIMEOUT_MS);
+
+        img.src = src;
+      });
+    }
+
+    async function loadImageWithRetry(path) {
+      const baseSrc = `./${path}`;
+      let lastError = null;
+
+      for (let attempt = 1; attempt <= PRELOAD_SETTINGS.MAX_RETRIES; attempt += 1) {
+        try {
+          await loadImageOnce(buildRetrySrc(baseSrc, attempt));
+          return;
+        } catch (error) {
+          lastError = error;
+          if (attempt < PRELOAD_SETTINGS.MAX_RETRIES) {
+            await sleep(PRELOAD_SETTINGS.RETRY_DELAY_MS * attempt);
+          }
+        }
+      }
+
+      const isTimeout = lastError instanceof Error && lastError.message.startsWith("Таймаут загрузки:");
+      const message = isTimeout ? `Таймаут загрузки: ${baseSrc}` : `Ошибка загрузки: ${baseSrc}`;
+      throw new Error(
+        `${message} (после ${PRELOAD_SETTINGS.MAX_RETRIES} попыток)`
+      );
+    }
+
     async function preloadImages(paths) {
       const unique = [...new Set(paths.map(normalizeDiscoveredPath))];
       let loaded = 0;
+      let nextIndex = 0;
 
-      const jobs = unique.map((path) => {
-        const src = `./${path}`;
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => {
-            loaded += 1;
-            loadingNode.textContent = `Загрузка изображений... ${loaded}/${unique.length}`;
-            resolve();
-          };
-          img.onerror = () => reject(new Error(`Ошибка загрузки: ${src}`));
-          img.src = src;
-        });
-      });
+      async function worker() {
+        while (nextIndex < unique.length) {
+          const current = nextIndex;
+          nextIndex += 1;
+          await loadImageWithRetry(unique[current]);
+          loaded += 1;
+          loadingNode.textContent = `Загрузка изображений... ${loaded}/${unique.length}`;
+        }
+      }
 
-      await Promise.all(jobs);
+      const workerCount = Math.max(1, Math.min(PRELOAD_SETTINGS.CONCURRENCY, unique.length));
+      const workers = Array.from({ length: workerCount }, () => worker());
+      await Promise.all(workers);
     }
 
     function createLayer(meta) {
