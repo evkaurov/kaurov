@@ -866,8 +866,28 @@
 
         .social-links {
             display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .social-links-row {
+            display: flex;
             flex-wrap: wrap;
-            gap: clamp(8px, 1.5vw, 16px);
+            justify-content: flex-end;
+            column-gap: clamp(8px, 1.5vw, 16px);
+            row-gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .social-links {
+                align-items: flex-start;
+            }
+
+            .social-links-row {
+                justify-content: flex-start;
+            }
         }
 
         .social-link {
