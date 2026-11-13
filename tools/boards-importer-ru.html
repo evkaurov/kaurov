@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Boards Importer 1.0.1 импортирует пины из досок Pinterest в Eagle: изображения, видео, story-pins с описаниями, ссылками и тегами.">
+        content="Boards Importer импортирует пины из досок Pinterest в Eagle: изображения, видео, story-pins с описаниями, ссылками и тегами досок.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://kaurov.net/tools/boards-importer-ru.html">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Boards Importer 1.0.1 | Плагин для Eagle">
+    <meta property="og:title" content="Boards Importer | Плагин для Eagle">
     <meta property="og:description"
         content="Импортирует пины (включая story-pins) из нескольких досок Pinterest в Eagle с сохранением метаданных и защитой от дублей.">
     <meta property="og:url" content="https://kaurov.net/tools/boards-importer-ru.html">
     <meta property="og:image" content="https://kaurov.net/assets/img/boards-importer-preview.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Boards Importer 1.0.1 | Плагин для Eagle">
+    <meta name="twitter:title" content="Boards Importer | Плагин для Eagle">
     <meta name="twitter:description"
         content="Сохраняет изображения, видео, story-pins и метаданные, импортируя сразу несколько досок Pinterest в Eagle.">
     <meta name="twitter:image" content="https://kaurov.net/assets/img/boards-importer-preview.jpg">
 
-    <title>Boards Importer 1.0.1 | Импорт досок Pinterest в Eagle</title>
+    <title>Boards Importer | Импорт досок Pinterest в Eagle</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!-- Google tag (gtag.js) -->
@@ -141,7 +141,7 @@
                 <img src="/assets/img/boards-importer-ava.png" alt="Boards Importer cover">
             </div>
             <div class="header-info">
-                <h1 class="header-title"><span class="header-title__text">Boards Importer 1.0.1</span>
+                <h1 class="header-title"><span class="header-title__text">Boards Importer</span>
                     <span class="app-badges" aria-label="Поддерживаемые платформы">
                         <span class="app-badge" title="Pinterest">
                             <img src="/assets/img/ico-pinterest.svg" alt="Pinterest">
@@ -153,12 +153,12 @@
                 </h1>
                 <div class="subtitle">Переносит доски Pinterest в Eagle — аккуратно и без ручной работы.</div>
                 <div class="about-text">
-                    <p>Boards Importer помогает сохранить референсы из Pinterest в библиотеку Eagle. Плагин скачивает изображения и видео, переносит описания, ссылки и теги — так вы не теряете контекст и легко находите материалы позже.</p>
+                    <p>Boards Importer помогает сохранить референсы из Pinterest в библиотеку Eagle. Плагин скачивает изображения и видео, переносит названия, описания и ссылки и отмечает каждый элемент тегом доски — так вы не теряете контекст и легко находите материалы позже.</p>
                     <p>Подходит для тех, кто собирает референсы для дизайна, анимации, брендинга и презентаций.</p>
                 </div>
                 <div class="cta-row">
                     <a class="button button--primary" href="eagle://installPlugin/9bd8ea41-c0ff-4c95-b91f-560f8574fcf8" data-modal-target="#download-modal">Установить плагин</a>
-                    <a class="button button--secondary" href="https://community-en.eagle.cool/index.php/plugin/9bd8ea41-c0ff-4c95-b91f-560f8574fcf8" target="_blank" rel="noopener">Открыть страницу плагина</a>
+                    <a class="button button--secondary" href="https://community-en.eagle.cool/plugin/9bd8ea41-c0ff-4c95-b91f-560f8574fcf8" target="_blank" rel="noopener">Открыть страницу плагина</a>
                 </div>
             </div>
         </div>
@@ -170,11 +170,15 @@
             <div class="section-content">
                 <div class="content-text">
                     <ul class="feature-list">
-                        <li><strong>Импортирует целые доски Pinterest.</strong> Выбираете одну или несколько досок — плагин сам всё скачивает.</li>
-                        <li><strong>Работает с разными типами контента.</strong> Поддерживает изображения, видео и Idea Pins.</li>
-                        <li><strong>Сохраняет полезную информацию.</strong> Название пина, описание, ссылку на источник и теги — всё остаётся в Eagle.</li>
-                        <li><strong>Не создаёт лишних копий.</strong> Если пин уже был импортирован раньше, плагин найдёт его и обновит теги.</li>
-                        <li><strong>Можно импортировать частично.</strong> Например, только последние ~50 пинов — удобно для обновления досок.</li>
+                        <li><strong>Импортирует целые доски Pinterest.</strong> Вводите ссылку на профиль или просто имя пользователя, выбираете одну или несколько досок — плагин сам всё скачивает.</li>
+                        <li><strong>Работает с разными типами контента.</strong> Изображения, видео и Idea Pins в исходном разрешении. Видео из Idea Pins сохраняется как видео, а не как стоп-кадр. Пины из разделов доски тоже попадают в импорт.</li>
+                        <li><strong>Сохраняет полезную информацию.</strong> Название пина становится именем элемента, описание и ссылка на источник — в заметках, а сам элемент ссылается на пин в Pinterest.</li>
+                        <li><strong>Аккуратные теги.</strong> Новые элементы получают тег «Pinterest» и название доски. Собственные теги пинов из Pinterest не переносятся.</li>
+                        <li><strong>Не создаёт лишних копий.</strong> Одно и то же медиа из нескольких досок добавляется один раз со всеми тегами досок. Если оно уже есть в Eagle, плагин только добавит недостающие теги досок и сохранит ваши теги.</li>
+                        <li><strong>Сначала показывает план.</strong> Перед импортом плагин сообщает, сколько новых элементов добавит и скольким существующим добавит теги досок. Ничего не меняется, пока вы не подтвердите.</li>
+                        <li><strong>Full или Latest 50.</strong> Full читает все пины, Latest 50 — до 50 последних пинов в каждой доске. Удобно для быстрого обновления.</li>
+                        <li><strong>Пауза и остановка.</strong> Импорт можно приостановить и продолжить или остановить — всё уже импортированное остаётся.</li>
+                        <li><strong>Закрытые доски тоже.</strong> Открытые доски импортируются без входа. Чтобы импортировать свои закрытые и секретные доски, войдите в Pinterest прямо в плагине.</li>
                         <li><strong>Интерфейс на русском и английском.</strong></li>
                     </ul>
                     <p class="feature-subhead">Чем отличается от расширения Eagle для Chrome</p>
@@ -183,7 +187,7 @@
                         <li>позволяет <strong>загружать несколько досок за один раз</strong>;</li>
                         <li>сохраняет <strong>описания и ссылки</strong>, а не только изображения;</li>
                         <li>корректно работает с тегами, даже если пин встречается в нескольких досках;</li>
-                        <li>показывает повторы внутри одной доски.</li>
+                        <li>находит повторы в выбранных досках и среди элементов, которые уже есть в библиотеке.</li>
                     </ul>
                 </div>
             </div>

@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Boards Importer 1.0.1 imports Pinterest boards into your Eagle library with media, metadata, and duplicate protection.">
+        content="Boards Importer imports Pinterest boards into your Eagle library with media, metadata, and duplicate protection.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://kaurov.net/tools/boards-importer.html">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Boards Importer 1.0.1 | Eagle plugin">
+    <meta property="og:title" content="Boards Importer | Eagle plugin">
     <meta property="og:description"
         content="Import Pinterest boards into your Eagle library with media, metadata, and duplicate protection.">
     <meta property="og:url" content="https://kaurov.net/tools/boards-importer.html">
     <meta property="og:image" content="https://kaurov.net/assets/img/boards-importer-preview.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Boards Importer 1.0.1 | Eagle plugin">
+    <meta name="twitter:title" content="Boards Importer | Eagle plugin">
     <meta name="twitter:description"
         content="Import Pinterest boards into your Eagle library with media, metadata, and duplicate protection.">
     <meta name="twitter:image" content="https://kaurov.net/assets/img/boards-importer-preview.jpg">
 
-    <title>Boards Importer 1.0.1 | Pinterest's boards import to Eagle</title>
+    <title>Boards Importer | Pinterest's boards import to Eagle</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!-- Google tag (gtag.js) -->
@@ -126,10 +126,10 @@
 
         <div class="header" id="overview">
             <div class="avatar script-avatar">
-                <img src="/assets/img/boards-importer-ava.png" alt="Font Collector cover">
+                <img src="/assets/img/boards-importer-ava.png" alt="Boards Importer cover">
             </div>
             <div class="header-info">
-                <h1 class="header-title"><span class="header-title__text">Boards Importer 1.0.1</span>
+                <h1 class="header-title"><span class="header-title__text">Boards Importer</span>
                     <span class="app-badges" aria-label="Supported platforms">
                         <span class="app-badge" title="Pinterest">
                             <img src="/assets/img/ico-pinterest.svg" alt="Pinterest">
@@ -141,12 +141,12 @@
                 </h1>
                 <div class="subtitle">Moves Pinterest boards into Eagle — neatly and hands-free.</div>
                 <div class="about-text">
-                    <p>Boards Importer helps keep your Pinterest references inside Eagle. The plugin downloads images and videos, brings over descriptions, source links, and tags so you keep context and can find assets later.</p>
+                    <p>Boards Importer helps keep your Pinterest references inside Eagle. The plugin downloads images and videos, brings over titles, descriptions, and source links, and tags every item with its board — so you keep context and can find assets later.</p>
                     <p>Great for collecting references for design, motion, branding, and presentations.</p>
                 </div>
                 <div class="cta-row">
                     <a class="button button--primary" href="eagle://installPlugin/9bd8ea41-c0ff-4c95-b91f-560f8574fcf8" data-modal-target="#download-modal">Install plugin</a>
-                    <a class="button button--secondary" href="https://community-en.eagle.cool/index.php/plugin/9bd8ea41-c0ff-4c95-b91f-560f8574fcf8" target="_blank" rel="noopener">Visit plugin page</a>
+                    <a class="button button--secondary" href="https://community-en.eagle.cool/plugin/9bd8ea41-c0ff-4c95-b91f-560f8574fcf8" target="_blank" rel="noopener">Visit plugin page</a>
                 </div>
             </div>
         </div>
@@ -158,11 +158,15 @@
             <div class="section-content">
                 <div class="content-text">
                     <ul class="feature-list">
-                        <li><strong>Imports entire Pinterest boards.</strong> Select one or multiple boards — the plugin grabs everything for you.</li>
-                        <li><strong>Handles all content types.</strong> Supports images, videos, and Idea Pins.</li>
-                        <li><strong>Keeps useful info.</strong> Title, description, source link, and tags all stay in Eagle.</li>
-                        <li><strong>Avoids duplicates.</strong> If a pin was imported before, the plugin finds it and updates tags.</li>
-                        <li><strong>Partial imports.</strong> Pull only the latest ~50 pins when you just need a refresh.</li>
+                        <li><strong>Imports entire Pinterest boards.</strong> Enter a profile URL or just a username, select one or several boards — the plugin grabs everything for you.</li>
+                        <li><strong>Handles all content types.</strong> Images, videos, and Idea Pins at original resolution. Video Idea Pins come in as video, not as a still frame. Pins in board sections are included too.</li>
+                        <li><strong>Keeps useful info.</strong> The pin title becomes the item name, the description and source link go to notes, and the item links back to the pin on Pinterest.</li>
+                        <li><strong>Clean tags.</strong> New items get the “Pinterest” tag and the board name. Pinterest’s own pin tags are not imported.</li>
+                        <li><strong>Avoids duplicates.</strong> The same media in several boards is added once with all board tags. If it is already in Eagle, the plugin only adds missing board tags and keeps your own tags.</li>
+                        <li><strong>Shows the plan first.</strong> Before importing, the plugin tells you how many new items it will add and how many existing items will get board tags. Nothing changes until you confirm.</li>
+                        <li><strong>Full or Latest 50.</strong> Full reads every pin; Latest 50 takes up to 50 newest pins per board — handy for a quick refresh.</li>
+                        <li><strong>Pause and Stop.</strong> Pause an import and resume it later, or stop it — everything already imported stays.</li>
+                        <li><strong>Private boards too.</strong> Public boards import without signing in. Sign in to Pinterest inside the plugin to import your private and secret boards.</li>
                         <li><strong>Interface in English and Russian.</strong></li>
                     </ul>
                     <p class="feature-subhead">How it differs from the Eagle Chrome extension</p>
@@ -171,7 +175,7 @@
                         <li><strong>Multiple boards at once.</strong> Pulls several boards in a single run.</li>
                         <li><strong>Saves descriptions and links.</strong> Not just images.</li>
                         <li><strong>Tag handling that stays correct.</strong> Even when a pin appears on multiple boards.</li>
-                        <li><strong>Shows duplicates.</strong> Surfaces repeats within the same board.</li>
+                        <li><strong>Finds duplicates.</strong> Across the selected boards and among items already in your library.</li>
                     </ul>
                 </div>
             </div>
