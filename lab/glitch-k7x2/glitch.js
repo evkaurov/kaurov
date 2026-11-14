@@ -173,6 +173,9 @@
         it.dur = hover ? HOVER_DUR : DUR;
         it.t0 = performance.now() + delay;
         it.active = true;
+        // страховка: если анимация тормозит (вкладка в фоне), контент всё равно покажется
+        const run = it.run = (it.run || 0) + 1;
+        if (!hover) setTimeout(() => { if (it.run === run && !it.shown) reveal(it); }, delay + DUR + 400);
         // пара линий где-то ещё на экране
         const nFree = hover ? (rnd() < 0.5 ? 1 : 0) : irnd(3);
         for (let i = 0; i < nFree; i++) spawnFreeLine(it.t0 + rnd() * it.dur * 0.7);
@@ -185,6 +188,7 @@
     }
 
     function reset(it) {
+        it.run = (it.run || 0) + 1;
         it.active = false;
         it.shown = false;
         if (state.mode === 'cover') it.el.classList.add('gx-hidden');
