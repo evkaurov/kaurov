@@ -12,6 +12,16 @@ body {
     background-position: calc(var(--gx-cell) * -2) calc(var(--gx-cell) * -2);
 }
 
+/* Выделение текста и картинок — фирменный синий */
+::selection {
+    background: #3353c4;
+    color: #fff;
+}
+
+img::selection {
+    background: rgba(51, 83, 196, 0.6);
+}
+
 .gx-canvas {
     position: absolute;   /* лежит в странице и прокручивается вместе с ней */
     will-change: transform;
