@@ -22,6 +22,7 @@
     const MARGIN = 160;         // запас холста за краями экрана, px
     const C30 = Math.cos(Math.PI / 6); // изометрия: оси под 30°
     const SELECTOR = [
+        '.sidebar .logo', '.nav-item', '.mobile-topbar__logo', '.mobile-menu-toggle',
         '.avatar', '.header-info h1', '.header-info .subtitle', '.about-text',
         '.section-title-wrapper', '.showreel-text', '.video-embed', '.watch-on',
         '.content-text', '.design-tools-intro', '.tool-card',
@@ -72,12 +73,20 @@
     // ---- Блоки ----
     const items = [];
     const byEl = new Map();
-    document.querySelectorAll(SELECTOR).forEach((el, i) => {
-        const it = { el, id: i, dur: DUR, lastHover: 0, active: false, shown: false, t0: 0, rects: [], fx: [], cols: 1, rows: 1 };
-        items.push(it);
-        byEl.set(el, it);
-        if (state.mode === 'cover') el.classList.add('gx-hidden');
-    });
+    function collect() {
+        const fresh = [];
+        document.querySelectorAll(SELECTOR).forEach((el) => {
+            if (byEl.has(el)) return;
+            const i = items.length;
+            const it = { el, id: i, dur: DUR, lastHover: 0, active: false, shown: false, t0: 0, rects: [], fx: [], cols: 1, rows: 1 };
+            items.push(it);
+            byEl.set(el, it);
+            if (state.mode === 'cover') el.classList.add('gx-hidden');
+            fresh.push(it);
+        });
+        return fresh;
+    }
+    collect();
 
     const rnd = Math.random;
     const irnd = (n) => Math.floor(rnd() * n);
@@ -110,6 +119,7 @@
             style: pick(['single', 'single', 'pair', 'dash']),
             col: rnd() < 0.72 ? 'w' : (rnd() < 0.7 ? 'a' : 'b'),
             dot: rnd() < 0.4,
+            gap: 16 + irnd(20),   // зазор между двумя линиями в паре, px
             dir: rnd() < 0.5 ? 1 : -1
         };
     }
@@ -211,6 +221,8 @@
         });
     }, { threshold: [0, 0.15] });
     items.forEach((it) => io.observe(it.el));
+    // мобильное меню сайт строит позже — подхватываем его пункты
+    document.addEventListener('DOMContentLoaded', () => collect().forEach((it) => io.observe(it.el)));
 
     // ---- Элементы, которые пробегают при прокрутке ----
     const sparks = [];
@@ -264,7 +276,7 @@
         line(x, y, x + dx, y + dy);
         ctx.setLineDash([]);
         if (L.style === 'pair') {
-            const ox = L.ang === 'vert' ? 6 : 0, oy = L.ang === 'vert' ? 0 : 6;
+            const ox = L.ang === 'vert' ? L.gap : 0, oy = L.ang === 'vert' ? 0 : L.gap;
             line(x + ox, y + oy, x + ox + dx * 0.6, y + oy + dy * 0.6);
         }
         if (L.dot) {
