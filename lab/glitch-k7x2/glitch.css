@@ -13,7 +13,8 @@ body {
 }
 
 .gx-canvas {
-    position: fixed;
+    position: absolute;   /* лежит в странице и прокручивается вместе с ней */
+    will-change: transform;
     left: 0;
     top: 0;
     pointer-events: none;

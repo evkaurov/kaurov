@@ -19,6 +19,7 @@
     const STEP = 45;            // шаг «кадра» — движение рывками, мс
     const STAGGER = 70;         // задержка между блоками, которые вошли одновременно, мс
     const SPARK_EVERY = 140;    // один элемент на столько px прокрутки
+    const MARGIN = 160;         // запас холста за краями экрана, px
     const C30 = Math.cos(Math.PI / 6); // изометрия: оси под 30°
     const SELECTOR = [
         '.avatar', '.header-info h1', '.header-info .subtitle', '.about-text',
@@ -51,16 +52,18 @@
     canvas.setAttribute('aria-hidden', 'true');
     document.body.appendChild(canvas);
     const ctx = canvas.getContext('2d');
-    let vw = 0, vh = 0;
+    let vw = 0, vh = 0, ch = 0;   // ch — высота холста: экран + запас сверху и снизу
+    let oy = 0;                   // сдвиг: координата экрана -> координата холста
 
     function resize() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         vw = window.innerWidth;
         vh = window.innerHeight;
         canvas.width = Math.round(vw * dpr);
-        canvas.height = Math.round(vh * dpr);
+        ch = vh + MARGIN * 2;
+        canvas.height = Math.round(ch * dpr);
         canvas.style.width = vw + 'px';   // размер в px: на телефоне 100vh больше видимой области
-        canvas.style.height = vh + 'px';
+        canvas.style.height = ch + 'px';
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
@@ -286,7 +289,14 @@
         const tick = Math.floor(now / STEP);
         const a1 = accent(), a2 = accent2();
         let busy = false;
-        ctx.clearRect(0, 0, vw, vh);
+        // Холст лежит в странице и прокручивается вместе с ней — глюк не отстаёт от блоков.
+        // Каждый кадр ставим холст под текущий экран.
+        const sy = window.scrollY;
+        const maxTop = Math.max(0, document.documentElement.scrollHeight - ch);
+        const top = Math.round(Math.min(Math.max(sy - MARGIN, 0), maxTop));
+        canvas.style.transform = 'translateY(' + top + 'px)';
+        oy = sy - top;
+        ctx.clearRect(0, 0, vw, ch);
 
         for (const it of items) {
             if (!it.active) continue;
@@ -297,9 +307,9 @@
             busy = true;
             const b = it.el.getBoundingClientRect();
             if (b.bottom < -CELL * 2 || b.top > vh + CELL * 2) continue;
-            const cw = b.width / it.cols, ch = b.height / it.rows;
+            const cw = b.width / it.cols, chh = b.height / it.rows;
             const gx = (c) => Math.round(b.left + c * cw);
-            const gy = (r) => Math.round(b.top + r * ch);
+            const gy = (r) => Math.round(b.top + oy + r * chh);
 
             for (const k of it.rects) {
                 if (t < k.tIn || t >= k.tOut) continue;
@@ -338,7 +348,7 @@
             if (t >= 1) { sparks.splice(i, 1); continue; }
             busy = true;
             if (t < 0) continue;
-            const x = s.c * CELL, y = s.r * CELL - window.scrollY;
+            const x = s.c * CELL, y = s.r * CELL - sy + oy;
             if (s.kind === 'bar') {
                 ctx.fillStyle = s.gray || t > 0.6 ? GRAY : a1;
                 ctx.fillRect(x, y, s.w * CELL, CELL);
@@ -369,6 +379,25 @@
         it.lastHover = now;
         start(it, 0, true);
     });
+
+    // Телефон: каждое касание блока даёт глюк (свайп для прокрутки не считается)
+    let tapX = 0, tapY = 0, tapT = 0;
+    document.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse') return;
+        tapX = e.clientX; tapY = e.clientY; tapT = performance.now();
+    }, { passive: true });
+    document.addEventListener('pointerup', (e) => {
+        if (e.pointerType === 'mouse') return;
+        const now = performance.now();
+        if (now - tapT > 500 || Math.abs(e.clientX - tapX) > 10 || Math.abs(e.clientY - tapY) > 10) return;
+        if (e.target.closest && e.target.closest('.gx-panel')) return;
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const hit = el && el.closest ? el.closest(SELECTOR) : null;
+        const it = hit ? byEl.get(hit) : null;
+        if (!it || it.active || !it.shown) return;
+        it.lastHover = now;
+        start(it, 0, true);
+    }, { passive: true });
 
     // ---- Пульт прототипа ----
     function replay() {
