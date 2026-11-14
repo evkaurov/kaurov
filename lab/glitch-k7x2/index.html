@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="yandex-verification" content="03d95937755fe759" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Motion Designer specializing in 2D Motion Graphics, Video Presentations and Logo Animation. High-quality animation for business. Watch my portfolio.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Eugene Kaurov | Motion designer, freelancer">
+    <meta property="og:description" content="I create 2D Motion Graphics, Video Presentations and Logo Animations for business.">
+    <meta property="og:url" content="https://kaurov.net/">
+    <meta property="og:image" content="https://kaurov.net/assets/img/preview.jpg">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eugene Kaurov | Motion designer, freelancer">
+    <meta name="twitter:description" content="I create 2D Motion Graphics, Video Presentations and Logo Animations for business.">
+    <meta name="twitter:image" content="https://kaurov.net/assets/img/preview.jpg">
+    
+    <title>[Glitch prototype] Eugene Kaurov | Motion designer, freelancer</title>
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../assets/css/styles.css?v=1.8">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('.nav-item[data-target]');
+                if (!link) return;
+
+                e.preventDefault();
+                const targetId = link.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const isInsideSpecializations = !!targetElement.closest('.specializations');
+                    if (isInsideSpecializations) {
+                        const stickyTitle = document.querySelector('.specializations__title-bar');
+                        const offset = stickyTitle ? stickyTitle.offsetHeight : 0;
+                        const targetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+                        window.scrollTo({ top: targetTop - offset, behavior: 'smooth' });
+                    } else {
+                        if (targetId === 'about') {
+                            const targetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+                            const offset = 40;
+                            window.scrollTo({ top: targetTop - offset, behavior: 'smooth' });
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="glitch.css">
+</head>
+<body>
+    <div class="mobile-topbar">
+        <a class="mobile-topbar__logo" href="/index.html" onclick="localStorage.setItem('preferredLang', 'en')">
+            <img src="../../assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+        </a>
+        <div class="mobile-topbar__controls">
+            <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                <span class="mobile-menu-toggle__icon" aria-hidden="true">
+                    <span class="mobile-menu-toggle__line"></span>
+                    <span class="mobile-menu-toggle__line"></span>
+                    <span class="mobile-menu-toggle__line"></span>
+                </span>
+            </button>
+            <div class="lang-toggle-global">
+                <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">EN</button>
+                <a class="lang-toggle" href="/ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">Ru</a>
+            </div>
+        </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" hidden>
+        <div class="mobile-menu__list"></div>
+    </nav>
+    <div class="lang-wrapper">
+        <div class="lang-toggle-global">
+            <button class="lang-toggle active" type="button" onclick="localStorage.setItem('preferredLang', 'en')">EN</button>
+            <a class="lang-toggle" href="/ru.html" onclick="localStorage.setItem('preferredLang', 'ru')">Ru</a>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <a href="/index.html" onclick="localStorage.setItem('preferredLang', 'en')">
+                    <img src="../../assets/img/kaurov-logo.svg" alt="Eugene Kaurov logo">
+                </a>
+            </div>
+            <a class="nav-item" data-target="about">About me</a>
+            <a class="nav-item" data-target="showreel">Showreel</a>
+            <a class="nav-item" data-target="video-presentations">Video<br>Presentations</a>
+            <a class="nav-item" data-target="logo-animations">Logo<br>Animations</a>
+            <a class="nav-item" data-target="motion-graphics">Motion Graphics<br>Packages</a>
+            <a class="nav-item" data-target="design-tools">Tools</a>
+            <a class="nav-item" data-target="contacts">Contacts</a>
+        </div>
+
+        <!-- Header -->
+        <div class="header" id="about">
+            <div class="avatar">
+                <img src="../../assets/img/avatar-2026-01-13.jpg" alt="Eugene Kaurov avatar">
+            </div>
+            <div class="header-info">
+                <h1>Eugene Kaurov</h1>
+                <div class="subtitle">Motion designer, freelancer</div>
+                <div class="about-text">
+                    <p>I create visuals and animation for businesses. 16 years in the field: started with graphic design, now focused on 2D motion and art direction.</p>
+                    <p>To work faster, I build custom After Effects scripts with help from AI. That keeps me out of repetitive tasks and focused on animation quality and deadlines.</p>
+                    <p>I work remotely on Moscow time. Registered as a sole proprietor; I work with companies under contract. Open to project-based work and in-house offers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Showreel Section -->
+        <div class="section" id="showreel">
+            <h2 class="section-title"><div class="section-title-wrapper"><span>Showreel</span></div></h2>
+            <div class="section-content">
+                <p class="showreel-text">Examples of my work in different styles: 3D, 2DFX, and collage animation.</p>
+                <div class="showreel-image">
+                    <div class="video-embed video-embed--16x9">
+                        <video class="video-player" controls preload="metadata" playsinline poster="../../assets/video/showreel-2023-preview-1.jpg">
+                            <source src="../../assets/video/showreel-2023-1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="watch-on">
+                        <span class="watch-on__label">Watch on</span>
+                        <div class="watch-on__links">
+                            <a class="watch-on__link" href="https://vimeo.com/836142709?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer" aria-label="Watch on Vimeo">
+                                <img src="../../assets/img/vimeo.svg" alt="Vimeo">
+                            </a>
+                            <a class="watch-on__link" href="https://youtu.be/O8N3faXoRNs" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+                                <img src="../../assets/img/youtube.svg" alt="YouTube">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="specializations" id="specializations">
+            <div class="specializations__title-bar">
+                <h2 class="section-title">
+                    <div class="section-title-wrapper">
+                        <span>Services</span>
+                    </div>
+                </h2>
+            </div>
+
+            <!-- Video Presentations Section -->
+            <div class="section" id="video-presentations">
+                <div class="section-content">
+                    <div class="content-text">
+                        <h2>Video<br>Presentations</h2>
+                        <p>I turn PDFs, charts, and reports into videos. This helps explain a new product, show an app interface, or present an annual report to investors. I can work with your source assets or create the visuals from scratch.</p>
+                    </div>
+                    <div class="content-image">
+                        <div class="video-embed video-embed--16x9">
+                            <video class="video-player" controls preload="metadata" playsinline poster="../../assets/video/presentation-reel-preview-1.png">
+                                <source src="../../assets/video/presentation-reel-1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="watch-on">
+                            <span class="watch-on__label">Watch on</span>
+                            <div class="watch-on__links">
+                                <a class="watch-on__link" href="https://vimeo.com/1019517744?fl=pl&fe=sh" target="_blank" rel="noopener noreferrer" aria-label="Watch on Vimeo">
+                                    <img src="../../assets/img/vimeo.svg" alt="Vimeo">
+                                </a>
+                                <a class="watch-on__link" href="https://youtu.be/k7F9ExTs74s" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube">
+                                    <img src="../../assets/img/youtube.svg" alt="YouTube">
+                                </a>
+                                <a class="watch-on__link" href="https://www.behance.net/gallery/210169365/Video-presentations-reel" target="_blank" rel="noopener noreferrer" aria-label="Watch on Behance">
+                                    <img src="../../assets/img/behance.svg" alt="Behance">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logo Animations Section -->
+            <div class="section" id="logo-animations">
+                <div class="section-content">
+                    <div class="content-text">
+                        <h2>Logo<br>Animations</h2>
+                        <p>I animate logos in 2D and 3D. The final file works for a YouTube opener, a brand film, or use on a website.</p>
+                    </div>
+                    <div class="content-image">
+                        <div class="video-embed">
+                            <iframe src="https://www.behance.net/embed/project/225663325?ilo0=1"
+                                    width="404"
+                                    height="316"
+                                    allowfullscreen
+                                    loading="lazy"
+                                    allow="clipboard-write"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motion Graphics Packages Section -->
+            <div class="section" id="motion-graphics">
+                <div class="section-content">
+                    <div class="content-text">
+                        <h2>Motion Graphics Packages</h2>
+                        <p>I prepare graphics for sports broadcasts, forums, TV, and YouTube. I assemble packages with openers, transitions, lower thirds, titles, and backgrounds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="design-tools">
+            <h2 class="section-title"><div class="section-title-wrapper"><span>Tools</span></div></h2>
+            <div class="section-content">
+                <div class="design-tools-intro">
+                    <p>My scripts and utilities for automating work.</p>
+                </div>
+                <div class="design-tools-grid">
+                    <a class="tool-card" href="/tools/font-collector.html">
+                        <div class="tool-card__image">
+                            <img src="../../assets/img/font-collector-preview.jpg" alt="Font Collector">
+                        </div>
+                        <div class="tool-card__info">
+                            <h3>Font Collector</h3>
+                            <p>Collects fonts from Adobe projects</p>
+                        </div>
+                    </a>
+                    <a class="tool-card" href="/tools/boards-importer.html">
+                        <div class="tool-card__image">
+                            <img src="../../assets/img/boards-importer-preview.jpg" alt="Boards Importer">
+                        </div>
+                        <div class="tool-card__info">
+                            <h3>Boards Importer</h3>
+                            <p>Imports Pinterest boards to Eagle</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacts Section -->
+        <div class="section" id="contacts">
+            <h2 class="section-title"><div class="section-title-wrapper"><span>Contacts</span></div></h2>
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <p>Message me to discuss a project or get a quote.</p>
+                    <div class="contact-item">
+                        <a href="mailto:evkaurov@gmail.com" class="contact-link">
+                            <span class="contact-icon">
+                                <img src="../../assets/img/contacts-icon-1.svg" alt="Email icon">
+                            </span>
+                            <span class="contact-text">evkaurov@gmail.com</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://t.me/evkaurov" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            <span class="contact-icon">
+                                <img src="../../assets/img/contacts-icon-2.svg" alt="Telegram icon">
+                            </span>
+                            <span class="contact-text">@evkaurov</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="social-section">
+                    <div class="social-title">Follow me on social media</div>
+                    <div class="social-links">
+                        <div class="social-links-row">
+                            <a class="contact-link" href="https://www.instagram.com/kaurov" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            <a class="contact-link" href="https://t.me/ekaurov" target="_blank" rel="noopener noreferrer">Telegram</a>
+                            <a class="contact-link" href="http://www.behance.net/Kaurov" target="_blank" rel="noopener noreferrer">Behance</a>
+                        </div>
+                        <div class="social-links-row">
+                            <a class="contact-link" href="https://vimeo.com/evkaurov" target="_blank" rel="noopener noreferrer">Vimeo</a>
+                            <a class="contact-link" href="https://www.facebook.com/evgeniy.kaurov" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../assets/scripts/mobile-menu.js?v=1.0"></script>
+<!-- 08.12.2025 -->
+    <script src="glitch.js"></script>
+</body>
+</html>
