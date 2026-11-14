@@ -11,7 +11,8 @@
     // ---- Настройки (можно крутить) ----
     const COLORS = { blue: '#3353c4', orange: '#ea4a15' }; // цвета из Work-n-Break
     const WHITE = '#f5f2f0';
-    const GRAY = '#262626';
+    // «погасший» прямоугольник — цветом фона страницы
+    const GRAY = getComputedStyle(document.body).backgroundColor || '#151515';
     const DARK = '#0d0d0d';
     const CELL = window.innerWidth < 600 ? 20 : 28; // примерный размер клетки, px
     const HOVER_DUR = 380;      // длительность глюка при наведении, мс
